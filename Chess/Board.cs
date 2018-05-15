@@ -16,14 +16,22 @@ namespace Chess {
         /// </summary>
         public Board() {
             squares = new Dictionary<string, Square>(8 * 8);
-            bool white = true;
+            bool white = false;
+            int startx = 0, starty = 0;
+            int x = startx;
+            int y = starty;
             for(int c = 0; c < 8; c++) {
                 white = !white;
+                Square square = null;
                 for(int r = 1; r <= 8; r++) {
-                    Square square = new Square(colLabels[c], r, white);
+                    square = new Square(colLabels[c], r, white, x, y);
                     squares.Add(square.ToString(), square);
+                    Program.form.AddSquare(square);
                     white = !white;
+                    x += square.Width;
                 }
+                x = startx;
+                y += square.Height;
             }
         }
         /// <summary>

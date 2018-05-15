@@ -31,11 +31,11 @@ namespace Chess {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(802, 773);
-            this.ForeColor = System.Drawing.Color.AliceBlue;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(802, 743);
+            this.ForeColor = System.Drawing.Color.Black;
+            this.Name = "Chess Game";
+            this.Text = "Chess Game";
             this.ResumeLayout(false);
 
         }

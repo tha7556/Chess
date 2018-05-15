@@ -44,7 +44,9 @@ namespace Chess {
         /// <param name="column">The column label</param>
         /// <param name="row">The row number</param>
         /// <param name="white">True if white, false otherwise</param>
-        public Square(char column, int row, bool white) {
+        /// <param name="x">The x coordinate for the Square</param>
+        /// <param name="y">The y coordinate for the Square</param>
+        public Square(char column, int row, bool white, int x, int y) {
             columnLabel = column;
             rowNumber = row;
             this.white = white;
@@ -52,7 +54,8 @@ namespace Chess {
                 BackColor = WHITE;
             else
                 BackColor = BLACK;
-            Location = new System.Drawing.Point(60, 60);
+            Location = new System.Drawing.Point(x, y);
+            Console.WriteLine(Location);
             Size = new System.Drawing.Size(75, 75);
             TabIndex = 0;
             UseVisualStyleBackColor = false;
