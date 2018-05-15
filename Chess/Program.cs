@@ -6,15 +6,15 @@ using System.Windows.Forms;
 
 namespace Chess {
     static class Program {
+        public static Form1 form = new Form1();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main() {
-            Board chessBoard = new Board();
+            Board board = new Board();
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(form);
         }
     }
 }

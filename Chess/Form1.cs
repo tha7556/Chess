@@ -13,5 +13,8 @@ namespace Chess {
         public Form1() {
             InitializeComponent();
         }
+        public void AddSquare(Square square) {
+            Controls.Add(square);
+        }
     }
 }

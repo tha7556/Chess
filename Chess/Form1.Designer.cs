@@ -1,5 +1,7 @@
-﻿namespace Chess {
-    partial class Form1 {
+﻿using System.Drawing;
+
+namespace Chess {
+    public partial class Form1 {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,10 +25,19 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(802, 773);
+            this.ForeColor = System.Drawing.Color.AliceBlue;
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

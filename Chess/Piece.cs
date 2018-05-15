@@ -8,7 +8,7 @@ namespace Chess {
     /// <summary>
     /// Abstract Chess Piece
     /// </summary>
-    abstract class Piece {
+    public abstract class Piece {
         protected bool hasMoved;
         protected bool white;
         protected Square square;

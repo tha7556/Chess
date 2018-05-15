@@ -7,3 +7,4 @@ E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.ca
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.exe
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.pdb
+E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.Form1.resources

@@ -1,14 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Chess {
     /// <summary>
     /// A Square on the chess board
     /// </summary>
-    class Square {
+    public class Square : Button {
+        /// <summary>
+        /// The Color used for white spaces
+        /// </summary>
+        public static readonly Color WHITE = Color.BurlyWood;
+        /// <summary>
+        /// The Color used for black spaces
+        /// </summary>
+        public static readonly Color BLACK = Color.SaddleBrown;
         private readonly bool white;
         /// <summary>
         /// True if the space is white, false otherwise
@@ -38,6 +48,14 @@ namespace Chess {
             columnLabel = column;
             rowNumber = row;
             this.white = white;
+            if (white) 
+                BackColor = WHITE;
+            else
+                BackColor = BLACK;
+            Location = new System.Drawing.Point(60, 60);
+            Size = new System.Drawing.Size(75, 75);
+            TabIndex = 0;
+            UseVisualStyleBackColor = false;
         }
         public override string ToString() {
             return columnLabel + rowNumber.ToString();
