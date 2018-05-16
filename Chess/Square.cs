@@ -62,7 +62,9 @@ namespace Chess {
             return columnLabel + rowNumber.ToString();
         }
         protected override void OnClick(EventArgs e) {
-            Console.WriteLine(Location + ", " + columnLabel + RowNumber);
+            if(Program.Selected != null) {
+                Program.Selected.MoveTo(this);
+            }
         }
     }
 }

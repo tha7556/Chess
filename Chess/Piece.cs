@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //TODO: Implement taking pieces, currently only moving on blank spaces
+//TODO: Check if there are pieces in the way
 namespace Chess {
     /// <summary>
     /// Abstract Chess Piece
@@ -58,9 +59,15 @@ namespace Chess {
         /// <returns>True if it was successful</returns>
         public bool MoveTo(Square square) {
             if(this.square == null || CanMoveTo(square)) {
+                this.square.Piece = null;
                 this.square = square;
                 square.Piece = this;
                 hasMoved = true;
+                Location = new Point(square.Location.X+5,square.Location.Y+5);
+                if (square.IsWhite)
+                    BackColor = Square.WHITE;
+                else
+                    BackColor = Square.BLACK;
                 return true;
             }
             return false;
@@ -68,16 +75,25 @@ namespace Chess {
         public bool IsDiagonalTo(Square square) {
             int xDir = this.square.RowNumber - square.RowNumber;
             int yDir = Board.colLabels.IndexOf(this.square.ColumnLabel) - Board.colLabels.IndexOf(square.ColumnLabel);
-            if(xDir != 0 && yDir/xDir == 1) {
+            if(xDir != 0 && Math.Abs(yDir/xDir) == 1) {
                 return true;
             }
             return false;
         }
         protected override void OnClick(EventArgs e) {
-            if(Program.Selected != null)
-                Program.Selected.Image = Program.Selected.BaseImage;
-            Program.Selected = this;
-            Image = selectedImage;
+            if (Program.Selected != null && Program.Selected.IsWhite != IsWhite) { //Taking enemy Piece
+                Console.WriteLine("Trying to take piece");
+            }
+            else if(Program.Selected != null && Program.Selected.Equals(this)) {
+                Image = BaseImage;
+                Program.Selected = null;
+            }
+            else { //Selecting different Piece
+                if (Program.Selected != null)
+                    Program.Selected.Image = Program.Selected.BaseImage; //Unselect previous Piece
+                Program.Selected = this;
+                Image = selectedImage;
+            }
            
         }
 
