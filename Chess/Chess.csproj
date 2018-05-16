@@ -71,6 +71,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Queen.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -86,14 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,16 +141,40 @@
     <None Include="Images\White Queen.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\White Rook Selected1.png" />
     <None Include="Images\Black Rook.png" />
     <None Include="Images\White Rook.png" />
+    <None Include="Resources\Black Bishop Selected.png" />
+    <None Include="Images\Black Bishop Selected.png" />
+    <None Include="Images\Black King Selected.png" />
+    <None Include="Images\Black Knight Selected.png" />
+    <None Include="Images\Black Pawn Selected.png" />
+    <None Include="Images\Black Queen Selected.png" />
+    <None Include="Images\Black Rook Selected.png" />
+    <None Include="Images\White Bishop Selected.png" />
+    <None Include="Images\White King Selected.png" />
+    <None Include="Images\White Knight Selected.png" />
+    <None Include="Images\White Pawn Selected.png" />
+    <None Include="Images\White Queen Selected.png" />
+    <None Include="Images\White Rook Selected.png" />
     <Content Include="Resources\Black Bishop.png" />
+    <None Include="Resources\Black King Selected.png" />
     <Content Include="Resources\Black King.png" />
+    <None Include="Resources\Black Knight Selected.png" />
     <Content Include="Resources\Black Knight.png" />
+    <None Include="Resources\Black Pawn Selected.png" />
     <Content Include="Resources\Black Pawn.png" />
+    <None Include="Resources\Black Queen Selected.png" />
     <Content Include="Resources\Black Queen.png" />
+    <None Include="Resources\Black Rook Selected1.png" />
+    <None Include="Resources\White Bishop Selected.png" />
     <Content Include="Resources\White Bishop.png" />
+    <None Include="Resources\White King Selected.png" />
     <Content Include="Resources\White King.png" />
+    <None Include="Resources\White Knight Selected.png" />
     <Content Include="Resources\White Knight.png" />
+    <None Include="Resources\White Pawn Selected.png" />
+    <None Include="Resources\White Queen Selected.png" />
     <Content Include="Resources\White Queen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

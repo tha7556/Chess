@@ -13,6 +13,8 @@ namespace Chess {
     public abstract class Piece : PictureBox {
         protected bool hasMoved;
         protected bool white;
+        public Image BaseImage { get; set; }
+        protected Image selectedImage;
         protected Square square;
         /// <summary>
         /// True if the Piece is white, false otherwise
@@ -70,6 +72,13 @@ namespace Chess {
                 return true;
             }
             return false;
+        }
+        protected override void OnClick(EventArgs e) {
+            if(Program.Selected != null)
+                Program.Selected.Image = Program.Selected.BaseImage;
+            Program.Selected = this;
+            Image = selectedImage;
+           
         }
 
     }
