@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace Chess {
     class King : Piece {
         public King(Square square, bool isWhite) : base(square, isWhite) {
-
+            if (isWhite)
+                Image = Properties.Resources.White_King;
+            else
+                Image = Properties.Resources.Black_King;
         }
         public override List<Square> AvailableMoves() {
             throw new NotImplementedException();

@@ -54,14 +54,15 @@ namespace Chess {
                 BackColor = WHITE;
             else
                 BackColor = BLACK;
-            Location = new System.Drawing.Point(x, y);
-            Console.WriteLine(Location);
-            Size = new System.Drawing.Size(75, 75);
+            Location = new Point(x, y);
+            Size = new Size(75, 75);
             TabIndex = 0;
-            UseVisualStyleBackColor = false;
         }
         public override string ToString() {
             return columnLabel + rowNumber.ToString();
+        }
+        protected override void OnClick(EventArgs e) {
+            Console.WriteLine(Location + ", " + columnLabel + RowNumber);
         }
     }
 }

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 //TODO: Implement taking pieces, currently only moving on blank spaces
 namespace Chess {
     /// <summary>
     /// Abstract Chess Piece
     /// </summary>
-    public abstract class Piece {
+    public abstract class Piece : PictureBox {
         protected bool hasMoved;
         protected bool white;
         protected Square square;
@@ -25,6 +27,16 @@ namespace Chess {
             this.square = square;
             hasMoved = false;
             white = isWhite;
+            if (square.IsWhite)
+                BackColor = Square.WHITE;
+            else
+                BackColor = Square.BLACK;
+            Location = new Point(square.Location.X+5, square.Location.Y+5);
+            Size = new Size(65, 65);
+            SizeMode = PictureBoxSizeMode.StretchImage;
+            TabIndex = 0;
+            this.BringToFront();
+
         }
         /// <summary>
         /// Determines if a move is legal for the Piece
@@ -43,7 +55,7 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if it was successful</returns>
         public bool MoveTo(Square square) {
-            if(CanMoveTo(square)) {
+            if(this.square == null || CanMoveTo(square)) {
                 this.square = square;
                 square.Piece = this;
                 hasMoved = true;
@@ -59,5 +71,6 @@ namespace Chess {
             }
             return false;
         }
+
     }
 }

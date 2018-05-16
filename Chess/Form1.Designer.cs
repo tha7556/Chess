@@ -34,7 +34,7 @@ namespace Chess {
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(802, 743);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "Chess Game";
+            this.Name = "Form1";
             this.Text = "Chess Game";
             this.ResumeLayout(false);
 

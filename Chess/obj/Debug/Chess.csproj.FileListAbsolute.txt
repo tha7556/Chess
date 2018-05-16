@@ -1,10 +1,10 @@
-E:\ComputerScience\Github\Chess\Chess\bin\Debug\Chess.exe.config
-E:\ComputerScience\Github\Chess\Chess\bin\Debug\Chess.exe
-E:\ComputerScience\Github\Chess\Chess\bin\Debug\Chess.pdb
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
+E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.Form1.resources
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.Properties.Resources.resources
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+E:\ComputerScience\Github\Chess\Chess\bin\Debug\Chess.exe.config
+E:\ComputerScience\Github\Chess\Chess\bin\Debug\Chess.exe
+E:\ComputerScience\Github\Chess\Chess\bin\Debug\Chess.pdb
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.exe
 E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.pdb
-E:\ComputerScience\Github\Chess\Chess\obj\Debug\Chess.Form1.resources

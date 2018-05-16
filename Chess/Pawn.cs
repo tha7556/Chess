@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 namespace Chess {
     class Pawn : Piece {
         public Pawn(Square square, bool isWhite) : base(square, isWhite) {
+            if (isWhite)
+                Image = Properties.Resources.White_Pawn;
+            else
+                Image = Properties.Resources.Black_Pawn;
         }
         public override List<Square> AvailableMoves() {
             throw new NotImplementedException();

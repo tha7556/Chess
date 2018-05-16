@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace Chess {
     class Rook : Piece {
         public Rook(Square square, bool isWhite) : base(square,isWhite) {
-
+            if (isWhite)
+                Image = Properties.Resources.White_Rook;
+            else
+                Image = Properties.Resources.Black_Rook;
         }
         public override List<Square> AvailableMoves() {
             throw new NotImplementedException();

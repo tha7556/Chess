@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bishop.cs" />
+    <Compile Include="Bishop.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Board.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -55,19 +57,32 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="King.cs" />
-    <Compile Include="Knight.cs" />
-    <Compile Include="Pawn.cs" />
-    <Compile Include="Piece.cs" />
+    <Compile Include="King.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Knight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pawn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Piece.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queen.cs" />
-    <Compile Include="Rook.cs" />
+    <Compile Include="Queen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rook.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Square.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <LastGenOutput>Form11.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,6 +106,52 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White Pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Black Bishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Black King.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Black Knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Black Pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Black Queen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\White Bishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\White King.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\White Knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\White Pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\White Queen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Black Rook.png" />
+    <None Include="Images\White Rook.png" />
+    <Content Include="Resources\Black Bishop.png" />
+    <Content Include="Resources\Black King.png" />
+    <Content Include="Resources\Black Knight.png" />
+    <Content Include="Resources\Black Pawn.png" />
+    <Content Include="Resources\Black Queen.png" />
+    <Content Include="Resources\White Bishop.png" />
+    <Content Include="Resources\White King.png" />
+    <Content Include="Resources\White Knight.png" />
+    <Content Include="Resources\White Queen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
