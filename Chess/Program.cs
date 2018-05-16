@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Chess {
     static class Program {
-        public static Form1 form = new Form1();
+        public static Display display = new Display();
         public static Piece Selected;
         /// <summary>
         /// The main entry point for the application.
@@ -15,7 +15,7 @@ namespace Chess {
         static void Main() {
             Board board = new Board();
             Application.EnableVisualStyles();
-            Application.Run(form);
+            Application.Run(display);
         }
     }
 }

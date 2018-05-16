@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 
 namespace Chess {
-    public partial class Form1 {
+    public partial class Display {
         /// <summary>
         /// Required designer variable.
         /// </summary>

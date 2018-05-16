@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Chess {
     /// <summary>
-    /// A Square on the chess board
+    /// A Square on the chess board. Extends Button to make it easier to display
     /// </summary>
     public class Square : Button {
         /// <summary>
@@ -58,9 +58,17 @@ namespace Chess {
             Size = new Size(75, 75);
             TabIndex = 0;
         }
+        /// <summary>
+        /// Gets the String representation of the Square, the column label and the row number
+        /// </summary>
+        /// <returns>The column label + the row number</returns>
         public override string ToString() {
             return columnLabel + rowNumber.ToString();
         }
+        /// <summary>
+        /// Determines what happens when the Square is clicked on
+        /// </summary>
+        /// <param name="e">The click event</param>
         protected override void OnClick(EventArgs e) {
             if(Program.Selected != null) {
                 Program.Selected.MoveTo(this);

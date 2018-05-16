@@ -1,0 +1,493 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Chess</name>
+    </assembly>
+    <members>
+        <member name="T:Chess.Bishop">
+            <summary>
+            The Bishop chess Piece
+            </summary>
+        </member>
+        <member name="M:Chess.Bishop.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new Bishop Piece
+            </summary>
+            <param name="square">The Square to place the Bishop</param>
+            <param name="isWhite">True if the Bishop is white, false if black</param>
+        </member>
+        <member name="M:Chess.Bishop.AvailableMoves">
+            <summary>
+            Gets all available moves that the Bishop can move to
+            </summary>
+            <returns>A List of all available Squares</returns>
+        </member>
+        <member name="M:Chess.Bishop.CanMoveTo(Chess.Square)">
+            <summary>
+            Checks if the Bishop can move to the specified Square
+            </summary>
+            <param name="square">The Square the Bishop is moving to</param>
+            <returns>True if the move is valid</returns>
+        </member>
+        <member name="T:Chess.Board">
+            <summary>
+            An 8x8 Chess board
+            </summary>
+        </member>
+        <member name="M:Chess.Board.#ctor">
+            <summary>
+            Creates a new Chess board
+            </summary>
+        </member>
+        <member name="P:Chess.Board.Item(System.String)">
+            <summary>
+            Allows access to each square of the Board
+            </summary>
+            <param name="key">The key of the Square</param>
+            <returns>The Square with the given key</returns>
+        </member>
+        <member name="T:Chess.Display">
+            <summary>
+            A Windows Form display of the Chess Board
+            </summary>
+        </member>
+        <member name="M:Chess.Display.#ctor">
+            <summary>
+            Creates a new Display for the Chess Board
+            </summary>
+        </member>
+        <member name="M:Chess.Display.AddSquare(Chess.Square)">
+            <summary>
+            Adds a Square to the Chess Board
+            </summary>
+            <param name="square">The Square being added</param>
+        </member>
+        <member name="M:Chess.Display.AddPiece(Chess.Piece)">
+            <summary>
+            Adds a Piece to the Chess Board
+            </summary>
+            <param name="piece">The Piece being added</param>
+        </member>
+        <member name="M:Chess.Display.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Called whenever the Display is rendered
+            </summary>
+            <param name="args">The PaintEventArgs</param>
+        </member>
+        <member name="F:Chess.Display.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Chess.Display.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Chess.Display.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Chess.King">
+            <summary>
+            The King chess Piece
+            </summary>
+        </member>
+        <member name="M:Chess.King.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new King Piece
+            </summary>
+            <param name="square">The Square to place the King</param>
+            <param name="isWhite">True if the King is white, false if black</param>
+        </member>
+        <member name="M:Chess.King.AvailableMoves">
+            <summary>
+            Gets all available moves that the Queen can move to
+            </summary>
+            <returns>A List of all available Squares</returns>
+        </member>
+        <member name="M:Chess.King.CanMoveTo(Chess.Square)">
+            <summary>
+            Checks to see if the King can move to the specified Square
+            </summary>
+            <param name="square">The Square the King is moving to</param>
+            <returns>True if the move is valid</returns>
+        </member>
+        <member name="T:Chess.Knight">
+            <summary>
+            The Knight chess Piece
+            </summary>
+        </member>
+        <member name="M:Chess.Knight.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new Knight Piece
+            </summary>
+            <param name="square">The Square to place the Knight</param>
+            <param name="isWhite">True if the Knight is white, false if black</param>
+        </member>
+        <member name="M:Chess.Knight.AvailableMoves">
+            <summary>
+            Gets all available moves that the Knight can move to
+            </summary>
+            <returns>A List of all available Squares</returns>
+        </member>
+        <member name="M:Chess.Knight.CanMoveTo(Chess.Square)">
+            <summary>
+            Checks to see if the Knight can move to the specified Square
+            </summary>
+            <param name="square">The Square the Knight is moving to</param>
+            <returns>True if the move is valid</returns>
+        </member>
+        <member name="T:Chess.Pawn">
+            <summary>
+            The Pawn chess Piece
+            </summary>
+        </member>
+        <member name="M:Chess.Pawn.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new Pawn Piece
+            </summary>
+            <param name="square">The Square to place the Pawn</param>
+            <param name="isWhite">True if the Pawn is white, false if black</param>
+        </member>
+        <member name="M:Chess.Pawn.AvailableMoves">
+            <summary>
+            Gets all available moves that the Pawn can move to
+            </summary>
+            <returns>A List of all available Squares</returns>
+        </member>
+        <member name="M:Chess.Pawn.CanMoveTo(Chess.Square)">
+            <summary>
+            Checks to see if the Pawn can move to the specified location
+            </summary>
+            <param name="square">The Square the Pawn is moving to</param>
+            <returns>True if the move is valid</returns>
+        </member>
+        <member name="T:Chess.Piece">
+            <summary>
+            Abstract Chess Piece. Extends a PictureBox to make it easier to display
+            </summary>
+        </member>
+        <member name="F:Chess.Piece.hasMoved">
+            <summary>
+            True if the Piece has already been moved, false otherwise
+            </summary>
+        </member>
+        <member name="F:Chess.Piece.white">
+            <summary>
+            True if the Piece is white, false otherwise
+            </summary>
+        </member>
+        <member name="P:Chess.Piece.BaseImage">
+            <summary>
+            The Base Image of the Piece
+            </summary>
+        </member>
+        <member name="F:Chess.Piece.selectedImage">
+            <summary>
+            The Selected Image of the Piece
+            </summary>
+        </member>
+        <member name="F:Chess.Piece.square">
+            <summary>
+            The Square that the Piece is on
+            </summary>
+        </member>
+        <member name="P:Chess.Piece.IsWhite">
+            <summary>
+            True if the Piece is white, false otherwise
+            </summary>
+        </member>
+        <member name="M:Chess.Piece.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new Piece
+            </summary>
+            <param name="isWhite">True if the Piece should be white, false otherwise</param>
+            <param name="square">The square the Piece should be put</param>
+        </member>
+        <member name="M:Chess.Piece.CanMoveTo(Chess.Square)">
+            <summary>
+            Determines if a move is legal for the Piece
+            </summary>
+            <param name="square">The square to move to</param>
+            <returns>True if the move is legal</returns>
+        </member>
+        <member name="M:Chess.Piece.AvailableMoves">
+            <summary>
+            Gets every Square available to move to
+            </summary>
+            <returns>A List of Squares the Piece can move to</returns>
+        </member>
+        <member name="M:Chess.Piece.MoveTo(Chess.Square)">
+            <summary>
+            Moves the Piece to the square
+            </summary>
+            <param name="square">The square to move to</param>
+            <returns>True if it was successful</returns>
+        </member>
+        <member name="M:Chess.Piece.IsDiagonalTo(Chess.Square)">
+            <summary>
+            Checks to see if the Piece is located diagonally from the square
+            </summary>
+            <param name="square">The square being checked</param>
+            <returns>True if the Piece is diagonal from the square</returns>
+        </member>
+        <member name="M:Chess.Piece.OnClick(System.EventArgs)">
+            <summary>
+            Handles what happens when a Piece is clicked on
+            </summary>
+            <param name="e">The click event</param>
+        </member>
+        <member name="M:Chess.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Chess.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Bishop">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Bishop_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_King">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_King_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Knight">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Knight_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Pawn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Pawn_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Queen">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Queen_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Rook">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Black_Rook_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Bishop">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Bishop_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_King">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_King_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Knight">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Knight_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Pawn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Pawn_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Queen">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Queen_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Rook">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.White_Rook_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:Chess.Queen">
+            <summary>
+            The Queen chess Piece.
+            </summary>
+        </member>
+        <member name="M:Chess.Queen.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new Queen Piece on the given square
+            </summary>
+            <param name="square">The square to place the Queen</param>
+            <param name="isWhite">True if the piece is white, false if black</param>
+        </member>
+        <member name="M:Chess.Queen.AvailableMoves">
+            <summary>
+            Gets all available moves that the Queen can move to
+            </summary>
+            <returns>A List of all available Squares</returns>
+        </member>
+        <member name="M:Chess.Queen.CanMoveTo(Chess.Square)">
+            <summary>
+            Checks if the Queen can move to the specified Square
+            </summary>
+            <param name="square">The Square the Queen is moving to</param>
+            <returns>True if the move is valid</returns>
+        </member>
+        <member name="T:Chess.Rook">
+            <summary>
+            The Rook chess Piece
+            </summary>
+        </member>
+        <member name="M:Chess.Rook.#ctor(Chess.Square,System.Boolean)">
+            <summary>
+            Creates a new Rook Piece
+            </summary>
+            <param name="square">The Square to place the Rook</param>
+            <param name="isWhite">True if the Rook is white, false if black</param>
+        </member>
+        <member name="M:Chess.Rook.AvailableMoves">
+            <summary>
+            Gets all available moves that the Rook can move to
+            </summary>
+            <returns>A List of all available Squares</returns>
+        </member>
+        <member name="M:Chess.Rook.CanMoveTo(Chess.Square)">
+            <summary>
+            Checks to see if the Rook can move to the specified Square
+            </summary>
+            <param name="square">The Square the Rook is moving to</param>
+            <returns>True if the move is valid</returns>
+        </member>
+        <member name="T:Chess.Square">
+            <summary>
+            A Square on the chess board. Extends Button to make it easier to display
+            </summary>
+        </member>
+        <member name="F:Chess.Square.WHITE">
+            <summary>
+            The Color used for white spaces
+            </summary>
+        </member>
+        <member name="F:Chess.Square.BLACK">
+            <summary>
+            The Color used for black spaces
+            </summary>
+        </member>
+        <member name="P:Chess.Square.IsWhite">
+            <summary>
+            True if the space is white, false otherwise
+            </summary>
+        </member>
+        <member name="P:Chess.Square.ColumnLabel">
+            <summary>
+            The label identifying the column
+            </summary>
+        </member>
+        <member name="P:Chess.Square.RowNumber">
+            <summary>
+            The number identifying the row
+            </summary>
+        </member>
+        <member name="P:Chess.Square.Piece">
+            <summary>
+            The Piece that is currently on the square
+            </summary>
+        </member>
+        <member name="M:Chess.Square.#ctor(System.Char,System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Creates a new Square on a chess board
+            </summary>
+            <param name="column">The column label</param>
+            <param name="row">The row number</param>
+            <param name="white">True if white, false otherwise</param>
+            <param name="x">The x coordinate for the Square</param>
+            <param name="y">The y coordinate for the Square</param>
+        </member>
+        <member name="M:Chess.Square.ToString">
+            <summary>
+            Gets the String representation of the Square, the column label and the row number
+            </summary>
+            <returns>The column label + the row number</returns>
+        </member>
+        <member name="M:Chess.Square.OnClick(System.EventArgs)">
+            <summary>
+            Determines what happens when the Square is clicked on
+            </summary>
+            <param name="e">The click event</param>
+        </member>
+    </members>
+</doc>

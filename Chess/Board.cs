@@ -26,7 +26,7 @@ namespace Chess {
                 for(int c = 0; c < 8; c++) {
                     square = new Square(colLabels[c], r, white, x, y);
                     squares.Add(square.ToString(), square);
-                    Program.form.AddSquare(square);
+                    Program.display.AddSquare(square);
                     white = !white;
                     x += square.Width;
                 }
@@ -116,7 +116,7 @@ namespace Chess {
                 pieces[23 + i] = new Pawn(squares[colLabels[i - 1] + 7.ToString()], false);
 
             foreach (Piece p in pieces)
-                Program.form.AddPiece(p);
+                Program.display.AddPiece(p);
         }
 
     }

@@ -9,13 +9,28 @@ using System.Windows.Forms;
 //TODO: Check if there are pieces in the way
 namespace Chess {
     /// <summary>
-    /// Abstract Chess Piece
+    /// Abstract Chess Piece. Extends a PictureBox to make it easier to display
     /// </summary>
     public abstract class Piece : PictureBox {
+        /// <summary>
+        /// True if the Piece has already been moved, false otherwise
+        /// </summary>
         protected bool hasMoved;
+        /// <summary>
+        /// True if the Piece is white, false otherwise
+        /// </summary>
         protected bool white;
+        /// <summary>
+        /// The Base Image of the Piece
+        /// </summary>
         public Image BaseImage { get; set; }
+        /// <summary>
+        /// The Selected Image of the Piece
+        /// </summary>
         protected Image selectedImage;
+        /// <summary>
+        /// The Square that the Piece is on
+        /// </summary>
         protected Square square;
         /// <summary>
         /// True if the Piece is white, false otherwise
@@ -72,6 +87,11 @@ namespace Chess {
             }
             return false;
         }
+        /// <summary>
+        /// Checks to see if the Piece is located diagonally from the square
+        /// </summary>
+        /// <param name="square">The square being checked</param>
+        /// <returns>True if the Piece is diagonal from the square</returns>
         public bool IsDiagonalTo(Square square) {
             int xDir = this.square.RowNumber - square.RowNumber;
             int yDir = Board.colLabels.IndexOf(this.square.ColumnLabel) - Board.colLabels.IndexOf(square.ColumnLabel);
@@ -80,6 +100,10 @@ namespace Chess {
             }
             return false;
         }
+        /// <summary>
+        /// Handles what happens when a Piece is clicked on
+        /// </summary>
+        /// <param name="e">The click event</param>
         protected override void OnClick(EventArgs e) {
             if (Program.Selected != null && Program.Selected.IsWhite != IsWhite) { //Taking enemy Piece
                 Console.WriteLine("Trying to take piece");
