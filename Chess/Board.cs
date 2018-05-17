@@ -8,8 +8,11 @@ namespace Chess {
     /// <summary>
     /// An 8x8 Chess board
     /// </summary>
-    class Board {
+    public class Board {
         private Dictionary<string, Square> squares;
+        /// <summary>
+        /// The label for each Column
+        /// </summary>
         public static string colLabels = "ABCDEFGH";
         /// <summary>
         /// Creates a new Chess board
@@ -24,7 +27,7 @@ namespace Chess {
                 white = !white;
                 Square square = null;
                 for(int c = 0; c < 8; c++) {
-                    square = new Square(colLabels[c], r, white, x, y);
+                    square = new Square(colLabels[c], r, white, x, y,this);
                     squares.Add(square.ToString(), square);
                     Program.display.AddSquare(square);
                     white = !white;
@@ -48,18 +51,55 @@ namespace Chess {
                 squares[key] = value;
             }
         }
+        /// <summary>
+        /// Gets the Square to the left of the given Square
+        /// </summary>
+        /// <param name="square">The given Square</param>
+        /// <returns>The Square to the left of the given one</returns>
         public Square LeftOf(Square square) {
             int index = colLabels.IndexOf(square.ColumnLabel);
             if (index - 1 == -1)
                 return null;
             return squares[colLabels[index - 1] + square.RowNumber.ToString()];
         }
+        /// <summary>
+        /// Gets the Square to the right of the given Square
+        /// </summary>
+        /// <param name="square">The given Square</param>
+        /// <returns>The Square to the right of the given one</returns>
         public Square RightOf(Square square) {
             int index = colLabels.IndexOf(square.ColumnLabel);
             if (index + 1 == colLabels.Length)
                 return null;
             return squares[colLabels[index - 1] + square.RowNumber.ToString()];
         }
+        /// <summary>
+        /// Gets the Square above the given Square
+        /// </summary>
+        /// <param name="square">The given Square</param>
+        /// <returns>The Square above the given one</returns>
+        public Square TopOf(Square square) {
+            int row = square.RowNumber + 1;
+            if (row == 9)
+                return null;
+            return squares[square.ColumnLabel + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square below the given Square
+        /// </summary>
+        /// <param name="square">The given Square</param>
+        /// <returns>The Square to the left of the given one</returns>
+        public Square BottomOf(Square square) {
+            int row = square.RowNumber - 1;
+            if (row == 0)
+                return null;
+            return squares[square.ColumnLabel + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square to the bottom left diagonal of the given square
+        /// </summary>
+        /// <param name="square">The given square</param>
+        /// <returns>The Square to the bottom left diagonal of the given Square</returns>
         public Square BottomLeftOf(Square square) {
             int index = colLabels.IndexOf(square.ColumnLabel);
             int row = square.RowNumber - 1;
@@ -67,6 +107,11 @@ namespace Chess {
                 return null;
             return squares[colLabels[index - 1] + row.ToString()];
         }
+        /// <summary>
+        /// Gets the Square to the bottom right diagonal of the given square
+        /// </summary>
+        /// <param name="square">The given square</param>
+        /// <returns>The Square to the bottom right diagonal of the given Square</returns>
         public Square BottomRightOf(Square square) {
             int index = colLabels.IndexOf(square.ColumnLabel);
             int row = square.RowNumber - 1;
@@ -74,6 +119,11 @@ namespace Chess {
                 return null;
             return squares[colLabels[index + 1] + row.ToString()];
         }
+        /// <summary>
+        /// Gets the Square to the top left diagonal of the given square
+        /// </summary>
+        /// <param name="square">The given square</param>
+        /// <returns>The Square to the top left diagonal of the given Square</returns>
         public Square TopLeftOf(Square square) {
             int index = colLabels.IndexOf(square.ColumnLabel);
             int row = square.RowNumber + 1;
@@ -81,6 +131,11 @@ namespace Chess {
                 return null;
             return squares[colLabels[index - 1] + row.ToString()];
         }
+        /// <summary>
+        /// Gets the Square to the top right diagonal of the given square
+        /// </summary>
+        /// <param name="square">The given square</param>
+        /// <returns>The Square to the rop right diagonal of the given Square</returns>
         public Square TopRightOf(Square square) {
             int index = colLabels.IndexOf(square.ColumnLabel);
             int row = square.RowNumber + 1;
@@ -88,6 +143,9 @@ namespace Chess {
                 return null;
             return squares[colLabels[index + 1] + row.ToString()];
         }
+        /// <summary>
+        /// Adds all of the pieces to the board
+        /// </summary>
         public void AddPieces() {
             Piece[] pieces = new Piece[32];
             //White pieces

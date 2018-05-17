@@ -48,5 +48,9 @@ namespace Chess {
             }
             return false;
         }
+
+        public new bool PathIsClear(Square square) {
+            return true;
+        }
     }
 }

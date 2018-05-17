@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //TODO: Implement taking pieces, currently only moving on blank spaces
-//TODO: Check if there are pieces in the way
 namespace Chess {
     /// <summary>
     /// Abstract Chess Piece. Extends a PictureBox to make it easier to display
@@ -54,6 +53,7 @@ namespace Chess {
             SizeMode = PictureBoxSizeMode.StretchImage;
             TabIndex = 0;
             this.BringToFront();
+            square.Piece = this;
 
         }
         /// <summary>
@@ -62,6 +62,49 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if the move is legal</returns>
         public abstract bool CanMoveTo(Square square);
+        /// <summary>
+        /// Checks if there are pieces in the way before moving
+        /// </summary>
+        /// <param name="square">The Square that the Piece is moving to</param>
+        /// <returns>True if there are no other pieces in the way</returns>
+        public bool PathIsClear(Square square) {
+            if (this is Knight)
+                return true;
+            Square current = this.square;
+            int xDir = Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(current.ColumnLabel);
+            int yDir = square.RowNumber - current.RowNumber;
+            while (!current.Equals(square)) {
+                if (xDir != 0 && yDir == 0) { //Moving on just x axis
+                    if (xDir > 0) // moving right
+                        current = current.Board.RightOf(current);
+                    else //moving left
+                        current = current.Board.LeftOf(current);
+                }
+                else if (xDir == 0 && yDir != 0) { //Moving on just y axis
+                    if (yDir > 0) //moving up
+                        current = current.Board.TopOf(current);
+                    else //moving down
+                        current = current.Board.BottomOf(current);
+                }
+                else { //Diagonal
+                    if (yDir > 0) { //moving up
+                        if (xDir > 0) //moving right
+                            current = current.Board.TopRightOf(current);
+                        else //moving left
+                            current = current.Board.TopLeftOf(current);
+                    }
+                    else { //moving down
+                        if (xDir > 0) //moving right
+                            current = current.Board.BottomRightOf(current);
+                        else //moving left
+                            current = current.Board.BottomLeftOf(current);
+                    }
+                }
+                if (!current.Equals(square) && current.Piece != null)
+                    return false;
+            }
+            return true;
+        }
         /// <summary>
         /// Gets every Square available to move to
         /// </summary>
@@ -73,8 +116,9 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if it was successful</returns>
         public bool MoveTo(Square square) {
-            if(this.square == null || CanMoveTo(square)) {
+            if(this.square == null || (CanMoveTo(square) && this.PathIsClear(square))) {
                 this.square.Piece = null;
+                Program.lastStartSpace = this.square;
                 this.square = square;
                 square.Piece = this;
                 hasMoved = true;
@@ -83,6 +127,10 @@ namespace Chess {
                     BackColor = Square.WHITE;
                 else
                     BackColor = Square.BLACK;
+                Program.lastEndSpace = this.square;
+                Program.lastMoved = this;
+                Program.Selected = null;
+                Image = BaseImage;
                 return true;
             }
             return false;
@@ -108,15 +156,17 @@ namespace Chess {
             if (Program.Selected != null && Program.Selected.IsWhite != IsWhite) { //Taking enemy Piece
                 Console.WriteLine("Trying to take piece");
             }
-            else if(Program.Selected != null && Program.Selected.Equals(this)) {
+            else if(Program.Selected != null && Program.Selected.Equals(this)) { //Unselect Piece
                 Image = BaseImage;
                 Program.Selected = null;
             }
             else { //Selecting different Piece
                 if (Program.Selected != null)
                     Program.Selected.Image = Program.Selected.BaseImage; //Unselect previous Piece
-                Program.Selected = this;
-                Image = selectedImage;
+                if (Program.lastMoved == null || Program.lastMoved.IsWhite != IsWhite) { //Forcing turns
+                    Program.Selected = this;
+                    Image = selectedImage;
+                }
             }
            
         }

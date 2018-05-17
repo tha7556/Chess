@@ -35,6 +35,10 @@ namespace Chess {
         /// </summary>
         public int RowNumber { get { return rowNumber; } }
         /// <summary>
+        /// The Board that this Square is on
+        /// </summary>
+        public Board Board { get; }
+        /// <summary>
         /// The Piece that is currently on the square
         /// </summary>
         public Piece Piece { get; set; }
@@ -46,7 +50,8 @@ namespace Chess {
         /// <param name="white">True if white, false otherwise</param>
         /// <param name="x">The x coordinate for the Square</param>
         /// <param name="y">The y coordinate for the Square</param>
-        public Square(char column, int row, bool white, int x, int y) {
+        /// <param name="board">The board the square is on</param>
+        public Square(char column, int row, bool white, int x, int y, Board board) {
             columnLabel = column;
             rowNumber = row;
             this.white = white;
@@ -57,6 +62,7 @@ namespace Chess {
             Location = new Point(x, y);
             Size = new Size(75, 75);
             TabIndex = 0;
+            Board = board;
         }
         /// <summary>
         /// Gets the String representation of the Square, the column label and the row number
@@ -64,6 +70,24 @@ namespace Chess {
         /// <returns>The column label + the row number</returns>
         public override string ToString() {
             return columnLabel + rowNumber.ToString();
+        }
+        /// <summary>
+        /// Checks to see if this Square is equal with another
+        /// </summary>
+        /// <param name="obj">The Square to check</param>
+        /// <returns>True if they are equal</returns>
+        public override bool Equals(Object obj) {
+            if (obj is Square square) {
+                return rowNumber == square.rowNumber && columnLabel == square.columnLabel;
+            }
+            return false;
+        }
+        /// <summary>
+        /// Gets the hash code of the Square
+        /// </summary>
+        /// <returns>The hash code</returns>
+        public override int GetHashCode() {
+            return int.Parse(Board.colLabels.IndexOf(ColumnLabel) + RowNumber.ToString());
         }
         /// <summary>
         /// Determines what happens when the Square is clicked on

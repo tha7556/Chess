@@ -34,6 +34,11 @@
             An 8x8 Chess board
             </summary>
         </member>
+        <member name="F:Chess.Board.colLabels">
+            <summary>
+            The label for each Column
+            </summary>
+        </member>
         <member name="M:Chess.Board.#ctor">
             <summary>
             Creates a new Chess board
@@ -45,6 +50,67 @@
             </summary>
             <param name="key">The key of the Square</param>
             <returns>The Square with the given key</returns>
+        </member>
+        <member name="M:Chess.Board.LeftOf(Chess.Square)">
+            <summary>
+            Gets the Square to the left of the given Square
+            </summary>
+            <param name="square">The given Square</param>
+            <returns>The Square to the left of the given one</returns>
+        </member>
+        <member name="M:Chess.Board.RightOf(Chess.Square)">
+            <summary>
+            Gets the Square to the right of the given Square
+            </summary>
+            <param name="square">The given Square</param>
+            <returns>The Square to the right of the given one</returns>
+        </member>
+        <member name="M:Chess.Board.TopOf(Chess.Square)">
+            <summary>
+            Gets the Square above the given Square
+            </summary>
+            <param name="square">The given Square</param>
+            <returns>The Square above the given one</returns>
+        </member>
+        <member name="M:Chess.Board.BottomOf(Chess.Square)">
+            <summary>
+            Gets the Square below the given Square
+            </summary>
+            <param name="square">The given Square</param>
+            <returns>The Square to the left of the given one</returns>
+        </member>
+        <member name="M:Chess.Board.BottomLeftOf(Chess.Square)">
+            <summary>
+            Gets the Square to the bottom left diagonal of the given square
+            </summary>
+            <param name="square">The given square</param>
+            <returns>The Square to the bottom left diagonal of the given Square</returns>
+        </member>
+        <member name="M:Chess.Board.BottomRightOf(Chess.Square)">
+            <summary>
+            Gets the Square to the bottom right diagonal of the given square
+            </summary>
+            <param name="square">The given square</param>
+            <returns>The Square to the bottom right diagonal of the given Square</returns>
+        </member>
+        <member name="M:Chess.Board.TopLeftOf(Chess.Square)">
+            <summary>
+            Gets the Square to the top left diagonal of the given square
+            </summary>
+            <param name="square">The given square</param>
+            <returns>The Square to the top left diagonal of the given Square</returns>
+        </member>
+        <member name="M:Chess.Board.TopRightOf(Chess.Square)">
+            <summary>
+            Gets the Square to the top right diagonal of the given square
+            </summary>
+            <param name="square">The given square</param>
+            <returns>The Square to the rop right diagonal of the given Square</returns>
+        </member>
+        <member name="M:Chess.Board.AddPieces">
+            <summary>
+            Adds all of the pieces to the board
+            </summary>
         </member>
         <member name="T:Chess.Display">
             <summary>
@@ -214,6 +280,13 @@
             </summary>
             <param name="square">The square to move to</param>
             <returns>True if the move is legal</returns>
+        </member>
+        <member name="M:Chess.Piece.PathIsClear(Chess.Square)">
+            <summary>
+            Checks if there are pieces in the way before moving
+            </summary>
+            <param name="square">The Square that the Piece is moving to</param>
+            <returns>True if there are no other pieces in the way</returns>
         </member>
         <member name="M:Chess.Piece.AvailableMoves">
             <summary>
@@ -462,12 +535,17 @@
             The number identifying the row
             </summary>
         </member>
+        <member name="P:Chess.Square.Board">
+            <summary>
+            The Board that this Square is on
+            </summary>
+        </member>
         <member name="P:Chess.Square.Piece">
             <summary>
             The Piece that is currently on the square
             </summary>
         </member>
-        <member name="M:Chess.Square.#ctor(System.Char,System.Int32,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Chess.Square.#ctor(System.Char,System.Int32,System.Boolean,System.Int32,System.Int32,Chess.Board)">
             <summary>
             Creates a new Square on a chess board
             </summary>
@@ -476,12 +554,26 @@
             <param name="white">True if white, false otherwise</param>
             <param name="x">The x coordinate for the Square</param>
             <param name="y">The y coordinate for the Square</param>
+            <param name="board">The board the square is on</param>
         </member>
         <member name="M:Chess.Square.ToString">
             <summary>
             Gets the String representation of the Square, the column label and the row number
             </summary>
             <returns>The column label + the row number</returns>
+        </member>
+        <member name="M:Chess.Square.Equals(System.Object)">
+            <summary>
+            Checks to see if this Square is equal with another
+            </summary>
+            <param name="obj">The Square to check</param>
+            <returns>True if they are equal</returns>
+        </member>
+        <member name="M:Chess.Square.GetHashCode">
+            <summary>
+            Gets the hash code of the Square
+            </summary>
+            <returns>The hash code</returns>
         </member>
         <member name="M:Chess.Square.OnClick(System.EventArgs)">
             <summary>

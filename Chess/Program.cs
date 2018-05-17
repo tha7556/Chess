@@ -8,6 +8,9 @@ namespace Chess {
     static class Program {
         public static Display display = new Display();
         public static Piece Selected;
+        //Last move data
+        public static Piece lastMoved;
+        public static Square lastStartSpace, lastEndSpace;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
