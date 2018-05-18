@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//TODO: Implement taking pieces, currently only moving on blank spaces
+
 namespace Chess {
     /// <summary>
     /// Abstract Chess Piece. Extends a PictureBox to make it easier to display
@@ -62,6 +62,9 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if the move is legal</returns>
         public abstract bool CanMoveTo(Square square);
+        public virtual bool CanTake(Piece piece) {
+            return IsWhite != piece.IsWhite;
+        }
         /// <summary>
         /// Checks if there are pieces in the way before moving
         /// </summary>
@@ -116,7 +119,7 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if it was successful</returns>
         public bool MoveTo(Square square) {
-            if(this.square == null || (CanMoveTo(square) && this.PathIsClear(square))) {
+            if(this.square == null || this.PathIsClear(square)) {
                 this.square.Piece = null;
                 Program.lastStartSpace = this.square;
                 this.square = square;
@@ -154,7 +157,12 @@ namespace Chess {
         /// <param name="e">The click event</param>
         protected override void OnClick(EventArgs e) {
             if (Program.Selected != null && Program.Selected.IsWhite != IsWhite) { //Taking enemy Piece
-                Console.WriteLine("Trying to take piece");
+                Console.WriteLine("taking piece");
+                Console.WriteLine(Program.Selected.CanMoveTo(this.square));
+                if (Program.Selected.CanTake(this) && Program.Selected.CanMoveTo(this.square)) {
+                    Program.Selected.MoveTo(this.square);
+                    Remove();
+                }
             }
             else if(Program.Selected != null && Program.Selected.Equals(this)) { //Unselect Piece
                 Image = BaseImage;
@@ -169,6 +177,10 @@ namespace Chess {
                 }
             }
            
+        }
+        public void Remove() {
+            square.Piece = null;
+            Program.display.Controls.Remove(this);
         }
 
     }

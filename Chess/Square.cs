@@ -94,7 +94,9 @@ namespace Chess {
         /// </summary>
         /// <param name="e">The click event</param>
         protected override void OnClick(EventArgs e) {
-            if(Program.Selected != null) {
+            if(Program.Selected != null && (Piece == null || Program.Selected.CanTake(Piece)) && Program.Selected.CanMoveTo(this)) {
+                if (Piece != null)
+                    Piece.Remove();
                 Program.Selected.MoveTo(this);
             }
         }

@@ -39,7 +39,7 @@ namespace Chess {
         /// <param name="square">The Square the Bishop is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) {
-            if(IsDiagonalTo(square) && square.Piece == null) {
+            if(IsDiagonalTo(square)) {
                 return true;
             }
             return false;

@@ -40,18 +40,21 @@ namespace Chess {
         public override bool CanMoveTo(Square square) { //TODO: take pieces diagonally, Enpassant
             if(square.ColumnLabel == this.square.ColumnLabel) {
                 int distance = square.RowNumber - this.square.RowNumber;
-                if (distance == 1 && white && square.Piece == null)
+                if (distance == 1)
                     return true;
-                else if (distance == -1 && !white && square.Piece == null)
+                else if (distance == -1 && !white)
                     return true;
-                else if (distance == 2 && white && !hasMoved && square.Piece == null)
+                else if (distance == 2 && white && !hasMoved)
                     return true;
-                else if (distance == -2 && !white && !hasMoved && square.Piece == null)
+                else if (distance == -2 && !white && !hasMoved)
                     return true;
             }
             return false;
         }
+        public override bool CanTake(Piece piece) {
+            return false;
+        }
 
-        
+
     }
 }
