@@ -1,0 +1,10 @@
+E:\ComputerScience\Github\Chess\Chess\bin\Release\Chess.exe.config
+E:\ComputerScience\Github\Chess\Chess\bin\Release\Chess.exe
+E:\ComputerScience\Github\Chess\Chess\bin\Release\Chess.pdb
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.csprojAssemblyReference.cache
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.Display.resources
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.Properties.Resources.resources
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.csproj.GenerateResource.cache
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.csproj.CoreCompileInputs.cache
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.exe
+E:\ComputerScience\Github\Chess\Chess\obj\Release\Chess.pdb
