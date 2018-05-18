@@ -257,7 +257,7 @@
             The Selected Image of the Piece
             </summary>
         </member>
-        <member name="F:Chess.Piece.square">
+        <member name="F:Chess.Piece.Square">
             <summary>
             The Square that the Piece is on
             </summary>

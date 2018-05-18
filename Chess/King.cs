@@ -38,7 +38,7 @@ namespace Chess {
         /// <param name="square">The Square the King is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) { //TODO: Shouldn't be able to move if the move puts the King in check
-            if(Math.Abs(square.RowNumber - this.square.RowNumber) <= 1 && Math.Abs(Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(this.square.ColumnLabel)) <= 1 ) {
+            if(Math.Abs(square.RowNumber - this.Square.RowNumber) <= 1 && Math.Abs(Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(this.Square.ColumnLabel)) <= 1 ) {
                 return true;
             }
             return false;

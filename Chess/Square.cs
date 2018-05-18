@@ -78,7 +78,7 @@ namespace Chess {
         /// <returns>True if they are equal</returns>
         public override bool Equals(Object obj) {
             if (obj is Square square) {
-                return rowNumber == square.rowNumber && columnLabel == square.columnLabel;
+                return rowNumber == square.rowNumber && columnLabel.Equals(square.columnLabel);
             }
             return false;
         }

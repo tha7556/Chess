@@ -38,7 +38,7 @@ namespace Chess {
         /// <param name="square">The Square the Queen is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) {
-            if((IsDiagonalTo(square) || this.square.ColumnLabel.Equals(square.ColumnLabel) || this.square.RowNumber == square.RowNumber)) {
+            if((IsDiagonalTo(square) || this.Square.ColumnLabel.Equals(square.ColumnLabel) || this.Square.RowNumber == square.RowNumber)) {
                 return true;
             }
             return false;

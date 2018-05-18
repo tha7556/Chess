@@ -38,8 +38,8 @@ namespace Chess {
         /// <param name="square">The Square the Knight is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) {
-            int xDist = square.RowNumber - this.square.RowNumber;
-            int yDist = Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(this.square.ColumnLabel);
+            int xDist = square.RowNumber - this.Square.RowNumber;
+            int yDist = Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(this.Square.ColumnLabel);
             if(Math.Abs(yDist) == 2 && Math.Abs(xDist) == 1) {
                 return true;
             }

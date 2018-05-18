@@ -38,8 +38,8 @@ namespace Chess {
         /// <param name="square">The Square the Pawn is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) { //TODO: take pieces diagonally, Enpassant
-            if(square.ColumnLabel == this.square.ColumnLabel) {
-                int distance = square.RowNumber - this.square.RowNumber;
+            if(square.ColumnLabel == this.Square.ColumnLabel) {
+                int distance = square.RowNumber - this.Square.RowNumber;
                 if (distance == 1)
                     return true;
                 else if (distance == -1 && !white)
@@ -49,10 +49,28 @@ namespace Chess {
                 else if (distance == -2 && !white && !hasMoved)
                     return true;
             }
+            else if(square.Piece != null && IsDiagonalTo(square)) {
+                if(IsWhite) {
+                    if(square.Equals(square.Board.TopLeftOf(Square))) {
+                        return true;
+                    }
+                    else if (square.Equals(square.Board.TopRightOf(Square))) {
+                        return true;
+                    }
+                }
+                else {
+                    if (square.Equals(square.Board.BottomLeftOf(Square))) {
+                        return true;
+                    }
+                    else if (square.Equals(square.Board.BottomRightOf(Square))) {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
         public override bool CanTake(Piece piece) {
-            return false;
+            return base.CanTake(piece) && IsDiagonalTo(piece.Square);
         }
 
 
