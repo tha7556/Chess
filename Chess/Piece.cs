@@ -11,6 +11,7 @@ namespace Chess {
     /// Abstract Chess Piece. Extends a PictureBox to make it easier to display
     /// </summary>
     public abstract class Piece : PictureBox {
+        private int id;
         /// <summary>
         /// True if the Piece has already been moved, false otherwise
         /// </summary>
@@ -19,7 +20,6 @@ namespace Chess {
         /// True if the Piece is white, false otherwise
         /// </summary>
         protected bool white;
-        private int id;
         /// <summary>
         /// The Base Image of the Piece
         /// </summary>
@@ -236,6 +236,21 @@ namespace Chess {
                     break;
             }
             return int.Parse(b.ToString() + t.ToString() + id.ToString());
+        }
+        /// <summary>
+        /// Gets the string representation of the Piece
+        /// </summary>
+        /// <returns>The string representation of the Piece</returns>
+        public override string ToString() {
+            String result = "";
+            if (IsWhite)
+                result += "White ";
+            else
+                result += "Black ";
+            result += GetType().Name;
+                if (id > 0)
+                    result += " " + id;
+            return result;
         }
 
     }

@@ -38,7 +38,7 @@ namespace Chess {
         /// </summary>
         /// <param name="square">The Square the Pawn is moving to</param>
         /// <returns>True if the move is valid</returns>
-        public override bool CanMoveTo(Square square) { //TODO: Enpassant
+        public override bool CanMoveTo(Square square) {
             if (square.ColumnLabel == Space.ColumnLabel) { //Normal movement
                 int distance = square.RowNumber - Space.RowNumber;
                 if (distance == 1)
@@ -52,20 +52,16 @@ namespace Chess {
             }
             else if (square.Piece != null && IsDiagonalTo(square)) { //Taking Pieces
                 if (IsWhite) {
-                    if (square.Equals(Space.TopLeftOf())) {
+                    if (square.Equals(Space.TopLeftOf())) 
                         return true;
-                    }
-                    else if (square.Equals(Space.TopRightOf())) {
+                    else if (square.Equals(Space.TopRightOf())) 
                         return true;
-                    }
                 }
                 else {
-                    if (square.Equals(Space.BottomLeftOf())) {
+                    if (square.Equals(Space.BottomLeftOf()))
                         return true;
-                    }
-                    else if (square.Equals(Space.BottomRightOf())) {
+                    else if (square.Equals(Space.BottomRightOf()))
                         return true;
-                    }
                 }
             }
             //En Passant
@@ -102,9 +98,8 @@ namespace Chess {
         /// <param name="square">The Square to move to</param>
         /// <returns>True if the move was successful</returns>
         public override bool MoveTo(Square square) {
-            if(IsDiagonalTo(square) && square.Piece == null && CanMoveTo(square)) { //En Passant taking pieces
+            if(IsDiagonalTo(square) && square.Piece == null && CanMoveTo(square)) //En Passant taking pieces
                 Program.lastEndSpace.Piece.Remove();
-            }
             return base.MoveTo(square);
         }
 

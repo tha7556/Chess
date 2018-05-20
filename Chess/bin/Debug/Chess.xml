@@ -309,6 +309,12 @@
             </summary>
             <returns>The Piece's Hash code</returns>
         </member>
+        <member name="M:Chess.Piece.ToString">
+            <summary>
+            Gets the string representation of the Piece
+            </summary>
+            <returns>The string representation of the Piece</returns>
+        </member>
         <member name="M:Chess.Program.Main">
             <summary>
             The main entry point for the application.
