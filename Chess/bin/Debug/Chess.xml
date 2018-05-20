@@ -281,6 +281,13 @@
             <param name="square">The square to move to</param>
             <returns>True if the move is legal</returns>
         </member>
+        <member name="M:Chess.Piece.CanTake(Chess.Piece)">
+            <summary>
+            Checks to see if this Piece can take the given Piece
+            </summary>
+            <param name="piece">The Piece to take</param>
+            <returns>True if this Piece can take the given Piece</returns>
+        </member>
         <member name="M:Chess.Piece.PathIsClear(Chess.Square)">
             <summary>
             Checks if there are pieces in the way before moving
@@ -313,6 +320,11 @@
             Handles what happens when a Piece is clicked on
             </summary>
             <param name="e">The click event</param>
+        </member>
+        <member name="M:Chess.Piece.Remove">
+            <summary>
+            Removes this Piece from the Board
+            </summary>
         </member>
         <member name="M:Chess.Program.Main">
             <summary>

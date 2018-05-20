@@ -62,6 +62,11 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if the move is legal</returns>
         public abstract bool CanMoveTo(Square square);
+        /// <summary>
+        /// Checks to see if this Piece can take the given Piece
+        /// </summary>
+        /// <param name="piece">The Piece to take</param>
+        /// <returns>True if this Piece can take the given Piece</returns>
         public virtual bool CanTake(Piece piece) {
             return IsWhite != piece.IsWhite;
         }
@@ -158,8 +163,8 @@ namespace Chess {
         protected override void OnClick(EventArgs e) {
             if (Program.Selected != null && Program.Selected.IsWhite != IsWhite) { //Taking enemy Piece
                 if (Program.Selected.CanTake(this) && Program.Selected.CanMoveTo(this.Square)) {
-                    Program.Selected.MoveTo(this.Square);
                     Remove();
+                    Program.Selected.MoveTo(this.Square);
                 }
             }
             else if(Program.Selected != null && Program.Selected.Equals(this)) { //Unselect Piece
@@ -176,6 +181,9 @@ namespace Chess {
             }
            
         }
+        /// <summary>
+        /// Removes this Piece from the Board
+        /// </summary>
         public void Remove() {
             Square.Piece = null;
             Program.display.Controls.Remove(this);
