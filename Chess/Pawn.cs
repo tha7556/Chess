@@ -52,26 +52,26 @@ namespace Chess {
             }
             else if (square.Piece != null && IsDiagonalTo(square)) { //Taking Pieces
                 if (IsWhite) {
-                    if (square.Equals(square.Board.TopLeftOf(Square))) {
+                    if (square.Equals(Square.TopLeftOf())) {
                         return true;
                     }
-                    else if (square.Equals(square.Board.TopRightOf(Square))) {
+                    else if (square.Equals(Square.TopRightOf())) {
                         return true;
                     }
                 }
                 else {
-                    if (square.Equals(square.Board.BottomLeftOf(Square))) {
+                    if (square.Equals(Square.BottomLeftOf())) {
                         return true;
                     }
-                    else if (square.Equals(square.Board.BottomRightOf(Square))) {
+                    else if (square.Equals(Square.BottomRightOf())) {
                         return true;
                     }
                 }
             }
             //En Passant
-            else if ((square.Board.RightOf(Square).Piece is Pawn || square.Board.LeftOf(Square).Piece is Pawn) && 
-                   ((Square.Board.RightOf(Square).Piece != null && square.Board.RightOf(Square).Piece.IsWhite != IsWhite) || (Square.Board.LeftOf(Square).Piece != null && square.Board.LeftOf(Square).Piece.IsWhite != IsWhite))) {
-                if (Program.lastMoved.Square.Equals(square.Board.RightOf(Square)) || Program.lastMoved.Square.Equals(square.Board.LeftOf(Square))) {
+            else if ((Square.RightOf().Piece is Pawn || Square.LeftOf().Piece is Pawn) && 
+                   ((Square.RightOf().Piece != null && Square.RightOf().Piece.IsWhite != IsWhite) || (Square.LeftOf().Piece != null && Square.LeftOf().Piece.IsWhite != IsWhite))) {
+                if (Program.lastMoved.Square.Equals(Square.RightOf()) || Program.lastMoved.Square.Equals(Square.LeftOf())) {
                     if(Math.Abs(Program.lastEndSpace.RowNumber - Program.lastStartSpace.RowNumber) == 2) {
                         if(square.Piece == null && IsDiagonalTo(square)) {
                             if(IsWhite) {

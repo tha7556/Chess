@@ -65,6 +65,90 @@ namespace Chess {
             Board = board;
         }
         /// <summary>
+        /// Gets the Square to the left of the Square
+        /// </summary>
+        /// <returns>The Square to the left of the one</returns>
+        public Square LeftOf() {
+            int index = Board.colLabels.IndexOf(ColumnLabel);
+            if (index - 1 == -1)
+                return null;
+            return Program.board[Board.colLabels[index - 1] + RowNumber.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square to the right of the Square
+        /// </summary>
+        /// <returns>The Square to the right of the one</returns>
+        public Square RightOf() {
+            int index = Board.colLabels.IndexOf(ColumnLabel);
+            if (index + 1 == Board.colLabels.Length)
+                return null;
+            return Program.board[Board.colLabels[index + 1] + RowNumber.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square above the Square
+        /// </summary>
+        /// <returns>The Square above the Square</returns>
+        public Square TopOf() {
+            int row = RowNumber + 1;
+            if (row == 9)
+                return null;
+            return Program.board[ColumnLabel + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square below the Square
+        /// </summary>
+        /// <returns>The Square to the left of the Square</returns>
+        public Square BottomOf() {
+            int row = RowNumber - 1;
+            if (row == 0)
+                return null;
+            return Program.board[ColumnLabel + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square to the bottom left diagonal of the Square
+        /// </summary>
+        /// <returns>The Square to the bottom left diagonal of the Square</returns>
+        public Square BottomLeftOf() {
+            int index = Board.colLabels.IndexOf(ColumnLabel);
+            int row = RowNumber - 1;
+            if (index - 1 == -1 || row == 0)
+                return null;
+            return Program.board[Board.colLabels[index - 1] + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square to the bottom right diagonal of the Square
+        /// </summary>
+        /// <returns>The Square to the bottom right diagonal of the Square</returns>
+        public Square BottomRightOf() {
+            int index = Board.colLabels.IndexOf(ColumnLabel);
+            int row = RowNumber - 1;
+            if (index + 1 == Board.colLabels.Length || row == 0)
+                return null;
+            return Program.board[Board.colLabels[index + 1] + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square to the top left diagonal of the square
+        /// </summary>
+        /// <returns>The Square to the top left diagonal of the Square</returns>
+        public Square TopLeftOf() {
+            int index = Board.colLabels.IndexOf(ColumnLabel);
+            int row = RowNumber + 1;
+            if (index - 1 == -1 || row == 9)
+                return null;
+            return Program.board[Board.colLabels[index - 1] + row.ToString()];
+        }
+        /// <summary>
+        /// Gets the Square to the top right diagonal of the square
+        /// </summary>
+        /// <returns>The Square to the rop right diagonal of the Square</returns>
+        public Square TopRightOf() {
+            int index = Board.colLabels.IndexOf(ColumnLabel);
+            int row = RowNumber + 1;
+            if (index + 1 == Board.colLabels.Length || row == 9)
+                return null;
+            return Program.board[Board.colLabels[index + 1] + row.ToString()];
+        }
+        /// <summary>
         /// Gets the String representation of the Square, the column label and the row number
         /// </summary>
         /// <returns>The column label + the row number</returns>

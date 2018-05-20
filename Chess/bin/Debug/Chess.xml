@@ -52,62 +52,6 @@
             <param name="key">The key of the Square</param>
             <returns>The Square with the given key</returns>
         </member>
-        <member name="M:Chess.Board.LeftOf(Chess.Square)">
-            <summary>
-            Gets the Square to the left of the given Square
-            </summary>
-            <param name="square">The given Square</param>
-            <returns>The Square to the left of the given one</returns>
-        </member>
-        <member name="M:Chess.Board.RightOf(Chess.Square)">
-            <summary>
-            Gets the Square to the right of the given Square
-            </summary>
-            <param name="square">The given Square</param>
-            <returns>The Square to the right of the given one</returns>
-        </member>
-        <member name="M:Chess.Board.TopOf(Chess.Square)">
-            <summary>
-            Gets the Square above the given Square
-            </summary>
-            <param name="square">The given Square</param>
-            <returns>The Square above the given one</returns>
-        </member>
-        <member name="M:Chess.Board.BottomOf(Chess.Square)">
-            <summary>
-            Gets the Square below the given Square
-            </summary>
-            <param name="square">The given Square</param>
-            <returns>The Square to the left of the given one</returns>
-        </member>
-        <member name="M:Chess.Board.BottomLeftOf(Chess.Square)">
-            <summary>
-            Gets the Square to the bottom left diagonal of the given square
-            </summary>
-            <param name="square">The given square</param>
-            <returns>The Square to the bottom left diagonal of the given Square</returns>
-        </member>
-        <member name="M:Chess.Board.BottomRightOf(Chess.Square)">
-            <summary>
-            Gets the Square to the bottom right diagonal of the given square
-            </summary>
-            <param name="square">The given square</param>
-            <returns>The Square to the bottom right diagonal of the given Square</returns>
-        </member>
-        <member name="M:Chess.Board.TopLeftOf(Chess.Square)">
-            <summary>
-            Gets the Square to the top left diagonal of the given square
-            </summary>
-            <param name="square">The given square</param>
-            <returns>The Square to the top left diagonal of the given Square</returns>
-        </member>
-        <member name="M:Chess.Board.TopRightOf(Chess.Square)">
-            <summary>
-            Gets the Square to the top right diagonal of the given square
-            </summary>
-            <param name="square">The given square</param>
-            <returns>The Square to the rop right diagonal of the given Square</returns>
-        </member>
         <member name="M:Chess.Board.AddPieces">
             <summary>
             Adds all of the pieces to the board
@@ -592,6 +536,54 @@
             <param name="x">The x coordinate for the Square</param>
             <param name="y">The y coordinate for the Square</param>
             <param name="board">The board the square is on</param>
+        </member>
+        <member name="M:Chess.Square.LeftOf">
+            <summary>
+            Gets the Square to the left of the Square
+            </summary>
+            <returns>The Square to the left of the one</returns>
+        </member>
+        <member name="M:Chess.Square.RightOf">
+            <summary>
+            Gets the Square to the right of the Square
+            </summary>
+            <returns>The Square to the right of the one</returns>
+        </member>
+        <member name="M:Chess.Square.TopOf">
+            <summary>
+            Gets the Square above the Square
+            </summary>
+            <returns>The Square above the Square</returns>
+        </member>
+        <member name="M:Chess.Square.BottomOf">
+            <summary>
+            Gets the Square below the Square
+            </summary>
+            <returns>The Square to the left of the Square</returns>
+        </member>
+        <member name="M:Chess.Square.BottomLeftOf">
+            <summary>
+            Gets the Square to the bottom left diagonal of the Square
+            </summary>
+            <returns>The Square to the bottom left diagonal of the Square</returns>
+        </member>
+        <member name="M:Chess.Square.BottomRightOf">
+            <summary>
+            Gets the Square to the bottom right diagonal of the Square
+            </summary>
+            <returns>The Square to the bottom right diagonal of the Square</returns>
+        </member>
+        <member name="M:Chess.Square.TopLeftOf">
+            <summary>
+            Gets the Square to the top left diagonal of the square
+            </summary>
+            <returns>The Square to the top left diagonal of the Square</returns>
+        </member>
+        <member name="M:Chess.Square.TopRightOf">
+            <summary>
+            Gets the Square to the top right diagonal of the square
+            </summary>
+            <returns>The Square to the rop right diagonal of the Square</returns>
         </member>
         <member name="M:Chess.Square.ToString">
             <summary>

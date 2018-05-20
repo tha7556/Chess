@@ -90,28 +90,28 @@ namespace Chess {
             while (!current.Equals(square)) {
                 if (xDir != 0 && yDir == 0) { //Moving on just x axis
                     if (xDir > 0) // moving right
-                        current = current.Board.RightOf(current);
+                        current = current.RightOf();
                     else //moving left
-                        current = current.Board.LeftOf(current);
+                        current = current.LeftOf();
                 }
                 else if (xDir == 0 && yDir != 0) { //Moving on just y axis
                     if (yDir > 0) //moving up
-                        current = current.Board.TopOf(current);
+                        current = current.TopOf();
                     else //moving down
-                        current = current.Board.BottomOf(current);
+                        current = current.BottomOf();
                 }
                 else { //Diagonal
                     if (yDir > 0) { //moving up
                         if (xDir > 0) //moving right
-                            current = current.Board.TopRightOf(current);
+                            current = current.TopRightOf();
                         else //moving left
-                            current = current.Board.TopLeftOf(current);
+                            current = current.TopLeftOf();
                     }
                     else { //moving down
                         if (xDir > 0) //moving right
-                            current = current.Board.BottomRightOf(current);
+                            current = current.BottomRightOf();
                         else //moving left
-                            current = current.Board.BottomLeftOf(current);
+                            current = current.BottomLeftOf();
                     }
                 }
                 if (!current.Equals(square) && current.Piece != null)
