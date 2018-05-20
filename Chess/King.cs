@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//TODO: implement Castling
+
 namespace Chess {
     /// <summary>
     /// The King chess Piece
@@ -42,7 +42,36 @@ namespace Chess {
             if(Math.Abs(square.RowNumber - Space.RowNumber) <= 1 && Math.Abs(Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(Space.ColumnLabel)) <= 1 ) {
                 return true;
             }
+            else if(!hasMoved && Math.Abs(Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(Space.ColumnLabel)) == 2 && square.RowNumber == Space.RowNumber) { //Castling
+                Piece rook;
+                if (Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(Space.ColumnLabel) > 0) { //Moving right
+                    rook = Program.board[Board.colLabels[Board.colLabels.IndexOf(Space.ColumnLabel) + 3] + Space.RowNumber.ToString()].Piece;
+                }
+                else { //Moving left
+                    rook = Program.board[Board.colLabels[Board.colLabels.IndexOf(Space.ColumnLabel) - 4] + Space.RowNumber.ToString()].Piece;
+                }
+                if(rook is Rook && !rook.hasMoved && PathIsClear(square)) {
+                    return true;
+                }
+            }
             return false;
+        }
+        /// <summary>
+        /// MoveTo for Kings, used to implement Castling
+        /// </summary>
+        /// <param name="square">The Square to move to</param>
+        /// <returns>True if the move was successful</returns>
+        public override bool MoveTo(Square square) {
+            bool b = base.MoveTo(square);
+            if(Math.Abs(Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(Program.lastStartSpace.ColumnLabel)) == 2) { //Castling
+                if (Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(Program.lastStartSpace.ColumnLabel) > 0) { //Moving right
+                    Program.board[Board.colLabels[Board.colLabels.IndexOf(Program.lastStartSpace.ColumnLabel) + 3] + Program.lastStartSpace.RowNumber.ToString()].Piece.MoveTo(Space.LeftOf(),true);
+                }
+                else { //Moving left
+                     Program.board[Board.colLabels[Board.colLabels.IndexOf(Program.lastStartSpace.ColumnLabel) - 4] + Program.lastStartSpace.RowNumber.ToString()].Piece.MoveTo(Space.RightOf(), true);
+                }
+            }
+            return b;
         }
     }
 }

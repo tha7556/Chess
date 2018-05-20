@@ -15,7 +15,7 @@ namespace Chess {
         /// <summary>
         /// True if the Piece has already been moved, false otherwise
         /// </summary>
-        protected bool hasMoved;
+        public bool hasMoved;
         /// <summary>
         /// True if the Piece is white, false otherwise
         /// </summary>
@@ -125,9 +125,10 @@ namespace Chess {
         /// Moves the Piece to the square
         /// </summary>
         /// <param name="square">The square to move to</param>
+        /// <param name="ignorePath">True if the piece should ignore pieces in between it and the square</param>
         /// <returns>True if it was successful</returns>
-        public virtual bool MoveTo(Square square) {
-            if(Space == null || this.PathIsClear(square)) {
+        public virtual bool MoveTo(Square square, bool ignorePath) {
+            if(Space == null || this.PathIsClear(square) || ignorePath) {
                 Space.Piece = null;
                 Program.lastStartSpace = this.Space;
                 Space = square;
@@ -145,6 +146,14 @@ namespace Chess {
                 return true;
             }
             return false;
+        }
+        /// <summary>
+        /// Moves the Piece to the square
+        /// </summary>
+        /// <param name="square">The square to move to</param>
+        /// <returns>True if it was successful</returns>
+        public virtual bool MoveTo(Square square) {
+            return MoveTo(square, false);
         }
         /// <summary>
         /// Checks to see if the Piece is located diagonally from the square

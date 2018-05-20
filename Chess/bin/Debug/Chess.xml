@@ -128,6 +128,13 @@
             <param name="square">The Square the King is moving to</param>
             <returns>True if the move is valid</returns>
         </member>
+        <member name="M:Chess.King.MoveTo(Chess.Square)">
+            <summary>
+            MoveTo for Kings, used to implement Castling
+            </summary>
+            <param name="square">The Square to move to</param>
+            <returns>True if the move was successful</returns>
+        </member>
         <member name="T:Chess.Knight">
             <summary>
             The Knight chess Piece
@@ -270,6 +277,14 @@
             Gets every Square available to move to
             </summary>
             <returns>A List of Squares the Piece can move to</returns>
+        </member>
+        <member name="M:Chess.Piece.MoveTo(Chess.Square,System.Boolean)">
+            <summary>
+            Moves the Piece to the square
+            </summary>
+            <param name="square">The square to move to</param>
+            <param name="ignorePath">True if the piece should ignore pieces in between it and the square</param>
+            <returns>True if it was successful</returns>
         </member>
         <member name="M:Chess.Piece.MoveTo(Chess.Square)">
             <summary>
