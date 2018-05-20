@@ -14,7 +14,8 @@ namespace Chess {
         /// </summary>
         /// <param name="square">The Square to place the Bishop</param>
         /// <param name="isWhite">True if the Bishop is white, false if black</param>
-        public Bishop(Square square, bool isWhite) : base(square,isWhite) {
+        /// <param name="id">The id used to identify the Bishop</param>
+        public Bishop(Square square, bool isWhite, int id) : base(square,isWhite, id) {
             if (isWhite) {
                 Image = Properties.Resources.White_Bishop;
                 selectedImage = Properties.Resources.White_Bishop_Selected;

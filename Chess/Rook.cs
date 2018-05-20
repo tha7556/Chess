@@ -14,7 +14,8 @@ namespace Chess {
         /// </summary>
         /// <param name="square">The Square to place the Rook</param>
         /// <param name="isWhite">True if the Rook is white, false if black</param>
-        public Rook(Square square, bool isWhite) : base(square,isWhite) {
+        /// /// <param name="id">The id used to identify the Rook</param>
+        public Rook(Square square, bool isWhite, int id) : base(square,isWhite, id) {
             if (isWhite) {
                 Image = Properties.Resources.White_Rook;
                 selectedImage = Properties.Resources.White_Rook_Selected;

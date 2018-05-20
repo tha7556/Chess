@@ -20,6 +20,10 @@ namespace Chess {
         /// </summary>
         protected bool white;
         /// <summary>
+        /// The id used to identify the Piece
+        /// </summary>
+        protected int id;
+        /// <summary>
         /// The Base Image of the Piece
         /// </summary>
         public Image BaseImage { get; set; }
@@ -40,8 +44,10 @@ namespace Chess {
         /// </summary>
         /// <param name="isWhite">True if the Piece should be white, false otherwise</param>
         /// <param name="square">The square the Piece should be put</param>
-        public Piece(Square square, bool isWhite) {
+        /// /// <param name="id">The id used to identify the Piece</param>
+        public Piece(Square square, bool isWhite, int id) {
             this.Square = square;
+            this.id = id;
             hasMoved = false;
             white = isWhite;
             if (square.IsWhite)
@@ -123,7 +129,7 @@ namespace Chess {
         /// </summary>
         /// <param name="square">The square to move to</param>
         /// <returns>True if it was successful</returns>
-        public bool MoveTo(Square square) {
+        public virtual bool MoveTo(Square square) {
             if(this.Square == null || this.PathIsClear(square)) {
                 this.Square.Piece = null;
                 Program.lastStartSpace = this.Square;
@@ -187,6 +193,52 @@ namespace Chess {
         public void Remove() {
             Square.Piece = null;
             Program.display.Controls.Remove(this);
+        }
+        /// <summary>
+        /// Determines whether or not 2 Pieces are identical
+        /// </summary>
+        /// <param name="obj">The other Piece</param>
+        /// <returns>True if they are equivalent</returns>
+        public override bool Equals(Object obj) {
+            if(obj.GetType().Equals(GetType())) {
+                Piece p = (Piece)obj;
+                if(p.IsWhite == IsWhite) {
+                    if(id == p.id)
+                    return id == p.id;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// Gets the Hash code for the Piece
+        /// </summary>
+        /// <returns>The Piece's Hash code</returns>
+        public override int GetHashCode() {
+            int b = 0;
+            if (IsWhite)
+                b = 1;
+            int t = 0;
+            switch(GetType().Name) {
+                case ("Chess.Pawn"):
+                    t = 1;
+                    break;
+                case ("Chess.Rook"):
+                    t = 2;
+                    break;
+                case ("Chess.Knight"):
+                    t = 3;
+                    break;
+                case ("Chess.Bishop"):
+                    t = 4;
+                    break;
+                case ("Chess.King"):
+                    t = 5;
+                    break;
+                case ("Chess.Queen"):
+                    t = 6;
+                    break;
+            }
+            return int.Parse(b.ToString() + t.ToString() + id.ToString());
         }
 
     }

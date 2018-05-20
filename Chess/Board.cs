@@ -71,7 +71,7 @@ namespace Chess {
             int index = colLabels.IndexOf(square.ColumnLabel);
             if (index + 1 == colLabels.Length)
                 return null;
-            return squares[colLabels[index - 1] + square.RowNumber.ToString()];
+            return squares[colLabels[index + 1] + square.RowNumber.ToString()];
         }
         /// <summary>
         /// Gets the Square above the given Square
@@ -149,29 +149,29 @@ namespace Chess {
         public void AddPieces() {
             Piece[] pieces = new Piece[32];
             //White pieces
-            pieces[0] = new King(squares["E1"], true);
-            pieces[1] = new Queen(squares["D1"], true);
-            pieces[2] = new Bishop(squares["C1"], true);
-            pieces[3] = new Bishop(squares["F1"], true);
-            pieces[4] = new Knight(squares["B1"], true);
-            pieces[5] = new Knight(squares["G1"], true);
-            pieces[6] = new Rook(squares["A1"], true);
-            pieces[7] = new Rook(squares["H1"], true);
+            pieces[0] = new King(squares["E1"], true, 0);
+            pieces[1] = new Queen(squares["D1"], true, 0);
+            pieces[2] = new Bishop(squares["C1"], true, 1);
+            pieces[3] = new Bishop(squares["F1"], true, 2);
+            pieces[4] = new Knight(squares["B1"], true, 1);
+            pieces[5] = new Knight(squares["G1"], true, 2);
+            pieces[6] = new Rook(squares["A1"], true, 1);
+            pieces[7] = new Rook(squares["H1"], true, 2);
             //Black pieces
-            pieces[8] = new King(squares["E8"], false);
-            pieces[9] = new Queen(squares["D8"], false);
-            pieces[10] = new Bishop(squares["C8"], false);
-            pieces[11] = new Bishop(squares["F8"], false);
-            pieces[12] = new Knight(squares["B8"], false);
-            pieces[13] = new Knight(squares["G8"], false);
-            pieces[14] = new Rook(squares["A8"], false);
-            pieces[15] = new Rook(squares["H8"], false);
+            pieces[8] = new King(squares["E8"], false, 0);
+            pieces[9] = new Queen(squares["D8"], false, 0);
+            pieces[10] = new Bishop(squares["C8"], false, 1);
+            pieces[11] = new Bishop(squares["F8"], false, 2);
+            pieces[12] = new Knight(squares["B8"], false, 1);
+            pieces[13] = new Knight(squares["G8"], false, 2);
+            pieces[14] = new Rook(squares["A8"], false, 1);
+            pieces[15] = new Rook(squares["H8"], false, 2);
             //White pawns
             for (int i = 1; i <= 8; i++)
-                pieces[15 + i] = new Pawn(squares[colLabels[i - 1] + 2.ToString()], true);
+                pieces[15 + i] = new Pawn(squares[colLabels[i - 1] + 2.ToString()], true, i);
             //Black pawns
             for (int i = 1; i <= 8; i++)
-                pieces[23 + i] = new Pawn(squares[colLabels[i - 1] + 7.ToString()], false);
+                pieces[23 + i] = new Pawn(squares[colLabels[i - 1] + 7.ToString()], false, i);
 
             foreach (Piece p in pieces)
                 Program.display.AddPiece(p);

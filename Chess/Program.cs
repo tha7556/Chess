@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Chess {
+namespace Chess { 
     static class Program {
         public static Display display = new Display();
         public static Piece Selected;
@@ -17,6 +17,7 @@ namespace Chess {
         [STAThread]
         static void Main() {
             Board board = new Board();
+            Console.WriteLine(board["A1"].GetType());
             Application.EnableVisualStyles();
             Application.Run(display);
         }

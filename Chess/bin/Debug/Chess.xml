@@ -9,12 +9,13 @@
             The Bishop chess Piece
             </summary>
         </member>
-        <member name="M:Chess.Bishop.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.Bishop.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new Bishop Piece
             </summary>
             <param name="square">The Square to place the Bishop</param>
             <param name="isWhite">True if the Bishop is white, false if black</param>
+            <param name="id">The id used to identify the Bishop</param>
         </member>
         <member name="M:Chess.Bishop.AvailableMoves">
             <summary>
@@ -162,12 +163,13 @@
             The King chess Piece
             </summary>
         </member>
-        <member name="M:Chess.King.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.King.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new King Piece
             </summary>
             <param name="square">The Square to place the King</param>
             <param name="isWhite">True if the King is white, false if black</param>
+            /// <param name="id">The id used to identify the King</param>
         </member>
         <member name="M:Chess.King.AvailableMoves">
             <summary>
@@ -187,12 +189,13 @@
             The Knight chess Piece
             </summary>
         </member>
-        <member name="M:Chess.Knight.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.Knight.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new Knight Piece
             </summary>
             <param name="square">The Square to place the Knight</param>
             <param name="isWhite">True if the Knight is white, false if black</param>
+            /// <param name="id">The id used to identify the Knight</param>
         </member>
         <member name="M:Chess.Knight.AvailableMoves">
             <summary>
@@ -212,12 +215,13 @@
             The Pawn chess Piece
             </summary>
         </member>
-        <member name="M:Chess.Pawn.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.Pawn.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new Pawn Piece
             </summary>
             <param name="square">The Square to place the Pawn</param>
             <param name="isWhite">True if the Pawn is white, false if black</param>
+            /// <param name="id">The id used to identify the Pawn</param>
         </member>
         <member name="M:Chess.Pawn.AvailableMoves">
             <summary>
@@ -247,6 +251,11 @@
             True if the Piece is white, false otherwise
             </summary>
         </member>
+        <member name="F:Chess.Piece.id">
+            <summary>
+            The id used to identify the Piece
+            </summary>
+        </member>
         <member name="P:Chess.Piece.BaseImage">
             <summary>
             The Base Image of the Piece
@@ -267,12 +276,13 @@
             True if the Piece is white, false otherwise
             </summary>
         </member>
-        <member name="M:Chess.Piece.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.Piece.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new Piece
             </summary>
             <param name="isWhite">True if the Piece should be white, false otherwise</param>
             <param name="square">The square the Piece should be put</param>
+            /// <param name="id">The id used to identify the Piece</param>
         </member>
         <member name="M:Chess.Piece.CanMoveTo(Chess.Square)">
             <summary>
@@ -325,6 +335,19 @@
             <summary>
             Removes this Piece from the Board
             </summary>
+        </member>
+        <member name="M:Chess.Piece.Equals(System.Object)">
+            <summary>
+            Determines whether or not 2 Pieces are identical
+            </summary>
+            <param name="obj">The other Piece</param>
+            <returns>True if they are equivalent</returns>
+        </member>
+        <member name="M:Chess.Piece.GetHashCode">
+            <summary>
+            Gets the Hash code for the Piece
+            </summary>
+            <returns>The Piece's Hash code</returns>
         </member>
         <member name="M:Chess.Program.Main">
             <summary>
@@ -472,12 +495,13 @@
             The Queen chess Piece.
             </summary>
         </member>
-        <member name="M:Chess.Queen.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.Queen.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new Queen Piece on the given square
             </summary>
             <param name="square">The square to place the Queen</param>
             <param name="isWhite">True if the piece is white, false if black</param>
+            /// <param name="id">The id used to identify the Queen</param>
         </member>
         <member name="M:Chess.Queen.AvailableMoves">
             <summary>
@@ -497,12 +521,13 @@
             The Rook chess Piece
             </summary>
         </member>
-        <member name="M:Chess.Rook.#ctor(Chess.Square,System.Boolean)">
+        <member name="M:Chess.Rook.#ctor(Chess.Square,System.Boolean,System.Int32)">
             <summary>
             Creates a new Rook Piece
             </summary>
             <param name="square">The Square to place the Rook</param>
             <param name="isWhite">True if the Rook is white, false if black</param>
+            /// <param name="id">The id used to identify the Rook</param>
         </member>
         <member name="M:Chess.Rook.AvailableMoves">
             <summary>
