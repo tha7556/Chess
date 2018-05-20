@@ -8,7 +8,7 @@ namespace Chess {
     /// <summary>
     /// The Rook chess Piece
     /// </summary>
-    class Rook : Piece {
+    public class Rook : Piece {
         /// <summary>
         /// Creates a new Rook Piece
         /// </summary>
@@ -39,7 +39,7 @@ namespace Chess {
         /// <param name="square">The Square the Rook is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) {
-            if ((this.Square.ColumnLabel.Equals(square.ColumnLabel) || this.Square.RowNumber == square.RowNumber)) {
+            if ((Space.ColumnLabel.Equals(square.ColumnLabel) || Space.RowNumber == square.RowNumber)) {
                 return true;
             }
             return false;

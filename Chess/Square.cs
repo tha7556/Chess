@@ -11,6 +11,9 @@ namespace Chess {
     /// A Square on the chess board. Extends Button to make it easier to display
     /// </summary>
     public class Square : Button {
+        private readonly bool white;
+        private readonly char columnLabel;
+        private readonly int rowNumber;
         /// <summary>
         /// The Color used for white spaces
         /// </summary>
@@ -19,25 +22,18 @@ namespace Chess {
         /// The Color used for black spaces
         /// </summary>
         public static readonly Color BLACK = Color.SaddleBrown;
-        private readonly bool white;
         /// <summary>
         /// True if the space is white, false otherwise
         /// </summary>
         public bool IsWhite { get { return white; } }
-        private readonly char columnLabel;
         /// <summary>
         /// The label identifying the column
         /// </summary>
         public char ColumnLabel { get { return columnLabel; } }
-        private readonly int rowNumber;
         /// <summary>
         /// The number identifying the row
         /// </summary>
         public int RowNumber { get { return rowNumber; } }
-        /// <summary>
-        /// The Board that this Square is on
-        /// </summary>
-        public Board Board { get; }
         /// <summary>
         /// The Piece that is currently on the square
         /// </summary>
@@ -50,8 +46,7 @@ namespace Chess {
         /// <param name="white">True if white, false otherwise</param>
         /// <param name="x">The x coordinate for the Square</param>
         /// <param name="y">The y coordinate for the Square</param>
-        /// <param name="board">The board the square is on</param>
-        public Square(char column, int row, bool white, int x, int y, Board board) {
+        public Square(char column, int row, bool white, int x, int y) {
             columnLabel = column;
             rowNumber = row;
             this.white = white;
@@ -62,7 +57,6 @@ namespace Chess {
             Location = new Point(x, y);
             Size = new Size(75, 75);
             TabIndex = 0;
-            Board = board;
         }
         /// <summary>
         /// Gets the Square to the left of the Square

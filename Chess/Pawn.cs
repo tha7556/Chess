@@ -8,7 +8,7 @@ namespace Chess {
     /// <summary>
     /// The Pawn chess Piece
     /// </summary>
-    class Pawn : Piece {
+    public class Pawn : Piece {
         /// <summary>
         /// Creates a new Pawn Piece
         /// </summary>
@@ -39,8 +39,8 @@ namespace Chess {
         /// <param name="square">The Square the Pawn is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) { //TODO: Enpassant
-            if (square.ColumnLabel == this.Square.ColumnLabel) { //Normal movement
-                int distance = square.RowNumber - this.Square.RowNumber;
+            if (square.ColumnLabel == Space.ColumnLabel) { //Normal movement
+                int distance = square.RowNumber - Space.RowNumber;
                 if (distance == 1)
                     return true;
                 else if (distance == -1 && !white)
@@ -52,34 +52,34 @@ namespace Chess {
             }
             else if (square.Piece != null && IsDiagonalTo(square)) { //Taking Pieces
                 if (IsWhite) {
-                    if (square.Equals(Square.TopLeftOf())) {
+                    if (square.Equals(Space.TopLeftOf())) {
                         return true;
                     }
-                    else if (square.Equals(Square.TopRightOf())) {
+                    else if (square.Equals(Space.TopRightOf())) {
                         return true;
                     }
                 }
                 else {
-                    if (square.Equals(Square.BottomLeftOf())) {
+                    if (square.Equals(Space.BottomLeftOf())) {
                         return true;
                     }
-                    else if (square.Equals(Square.BottomRightOf())) {
+                    else if (square.Equals(Space.BottomRightOf())) {
                         return true;
                     }
                 }
             }
             //En Passant
-            else if ((Square.RightOf().Piece is Pawn || Square.LeftOf().Piece is Pawn) && 
-                   ((Square.RightOf().Piece != null && Square.RightOf().Piece.IsWhite != IsWhite) || (Square.LeftOf().Piece != null && Square.LeftOf().Piece.IsWhite != IsWhite))) {
-                if (Program.lastMoved.Square.Equals(Square.RightOf()) || Program.lastMoved.Square.Equals(Square.LeftOf())) {
+            else if ((Space.RightOf().Piece is Pawn || Space.LeftOf().Piece is Pawn) && 
+                   ((Space.RightOf().Piece != null && Space.RightOf().Piece.IsWhite != IsWhite) || (Space.LeftOf().Piece != null && Space.LeftOf().Piece.IsWhite != IsWhite))) {
+                if (Program.lastMoved.Space.Equals(Space.RightOf()) || Program.lastMoved.Space.Equals(Space.LeftOf())) {
                     if(Math.Abs(Program.lastEndSpace.RowNumber - Program.lastStartSpace.RowNumber) == 2) {
                         if(square.Piece == null && IsDiagonalTo(square)) {
                             if(IsWhite) {
-                                if (square.RowNumber > Square.RowNumber)
+                                if (square.RowNumber > Space.RowNumber)
                                     return true;
                             }
                             else {
-                                if (square.RowNumber < Square.RowNumber)
+                                if (square.RowNumber < Space.RowNumber)
                                     return true;
                             }
                         }
@@ -88,9 +88,19 @@ namespace Chess {
             }
             return false;
         }
+        /// <summary>
+        /// Determines whether or not the Pawn can take the given Piece
+        /// </summary>
+        /// <param name="piece">The Piece the Pawn is taking</param>
+        /// <returns>True if the Pawn can take the given Piece</returns>
         public override bool CanTake(Piece piece) {
-            return base.CanTake(piece) && IsDiagonalTo(piece.Square);
+            return base.CanTake(piece) && IsDiagonalTo(piece.Space);
         }
+        /// <summary>
+        /// Moves the Pawn to the given Square. Modified to take other Pawns with En Passant
+        /// </summary>
+        /// <param name="square">The Square to move to</param>
+        /// <returns>True if the move was successful</returns>
         public override bool MoveTo(Square square) {
             if(IsDiagonalTo(square) && square.Piece == null && CanMoveTo(square)) { //En Passant taking pieces
                 Program.lastEndSpace.Piece.Remove();

@@ -154,6 +154,13 @@
             <param name="square">The Square the Knight is moving to</param>
             <returns>True if the move is valid</returns>
         </member>
+        <member name="M:Chess.Knight.PathIsClear(Chess.Square)">
+            <summary>
+            Checks that the path is clear, which it always is for knights, so it is always true
+            </summary>
+            <param name="square">The Square the knight is moving to</param>
+            <returns>True if the path is clear</returns>
+        </member>
         <member name="T:Chess.Pawn">
             <summary>
             The Pawn chess Piece
@@ -180,6 +187,20 @@
             <param name="square">The Square the Pawn is moving to</param>
             <returns>True if the move is valid</returns>
         </member>
+        <member name="M:Chess.Pawn.CanTake(Chess.Piece)">
+            <summary>
+            Determines whether or not the Pawn can take the given Piece
+            </summary>
+            <param name="piece">The Piece the Pawn is taking</param>
+            <returns>True if the Pawn can take the given Piece</returns>
+        </member>
+        <member name="M:Chess.Pawn.MoveTo(Chess.Square)">
+            <summary>
+            Moves the Pawn to the given Square. Modified to take other Pawns with En Passant
+            </summary>
+            <param name="square">The Square to move to</param>
+            <returns>True if the move was successful</returns>
+        </member>
         <member name="T:Chess.Piece">
             <summary>
             Abstract Chess Piece. Extends a PictureBox to make it easier to display
@@ -195,11 +216,6 @@
             True if the Piece is white, false otherwise
             </summary>
         </member>
-        <member name="F:Chess.Piece.id">
-            <summary>
-            The id used to identify the Piece
-            </summary>
-        </member>
         <member name="P:Chess.Piece.BaseImage">
             <summary>
             The Base Image of the Piece
@@ -210,7 +226,7 @@
             The Selected Image of the Piece
             </summary>
         </member>
-        <member name="F:Chess.Piece.Square">
+        <member name="F:Chess.Piece.Space">
             <summary>
             The Square that the Piece is on
             </summary>
@@ -516,17 +532,12 @@
             The number identifying the row
             </summary>
         </member>
-        <member name="P:Chess.Square.Board">
-            <summary>
-            The Board that this Square is on
-            </summary>
-        </member>
         <member name="P:Chess.Square.Piece">
             <summary>
             The Piece that is currently on the square
             </summary>
         </member>
-        <member name="M:Chess.Square.#ctor(System.Char,System.Int32,System.Boolean,System.Int32,System.Int32,Chess.Board)">
+        <member name="M:Chess.Square.#ctor(System.Char,System.Int32,System.Boolean,System.Int32,System.Int32)">
             <summary>
             Creates a new Square on a chess board
             </summary>
@@ -535,7 +546,6 @@
             <param name="white">True if white, false otherwise</param>
             <param name="x">The x coordinate for the Square</param>
             <param name="y">The y coordinate for the Square</param>
-            <param name="board">The board the square is on</param>
         </member>
         <member name="M:Chess.Square.LeftOf">
             <summary>

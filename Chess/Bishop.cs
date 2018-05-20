@@ -8,7 +8,7 @@ namespace Chess {
     /// <summary>
     /// The Bishop chess Piece
     /// </summary>
-    class Bishop : Piece {
+    public class Bishop : Piece {
         /// <summary>
         /// Creates a new Bishop Piece
         /// </summary>

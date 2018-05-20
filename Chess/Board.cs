@@ -27,7 +27,7 @@ namespace Chess {
                 white = !white;
                 Square square = null;
                 for(int c = 0; c < 8; c++) {
-                    square = new Square(colLabels[c], r, white, x, y,this);
+                    square = new Square(colLabels[c], r, white, x, y);
                     squares.Add(square.ToString(), square);
                     Program.display.AddSquare(square);
                     white = !white;

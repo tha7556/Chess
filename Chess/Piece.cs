@@ -19,10 +19,7 @@ namespace Chess {
         /// True if the Piece is white, false otherwise
         /// </summary>
         protected bool white;
-        /// <summary>
-        /// The id used to identify the Piece
-        /// </summary>
-        protected int id;
+        private int id;
         /// <summary>
         /// The Base Image of the Piece
         /// </summary>
@@ -34,7 +31,7 @@ namespace Chess {
         /// <summary>
         /// The Square that the Piece is on
         /// </summary>
-        public Square Square;
+        public Square Space;
         /// <summary>
         /// True if the Piece is white, false otherwise
         /// </summary>
@@ -46,7 +43,7 @@ namespace Chess {
         /// <param name="square">The square the Piece should be put</param>
         /// /// <param name="id">The id used to identify the Piece</param>
         public Piece(Square square, bool isWhite, int id) {
-            this.Square = square;
+            Space = square;
             this.id = id;
             hasMoved = false;
             white = isWhite;
@@ -58,7 +55,7 @@ namespace Chess {
             Size = new Size(65, 65);
             SizeMode = PictureBoxSizeMode.StretchImage;
             TabIndex = 0;
-            this.BringToFront();
+            BringToFront();
             square.Piece = this;
 
         }
@@ -84,7 +81,7 @@ namespace Chess {
         public bool PathIsClear(Square square) {
             if (this is Knight)
                 return true;
-            Square current = this.Square;
+            Square current = Space;
             int xDir = Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(current.ColumnLabel);
             int yDir = square.RowNumber - current.RowNumber;
             while (!current.Equals(square)) {
@@ -130,10 +127,10 @@ namespace Chess {
         /// <param name="square">The square to move to</param>
         /// <returns>True if it was successful</returns>
         public virtual bool MoveTo(Square square) {
-            if(this.Square == null || this.PathIsClear(square)) {
-                this.Square.Piece = null;
-                Program.lastStartSpace = this.Square;
-                this.Square = square;
+            if(Space == null || this.PathIsClear(square)) {
+                Space.Piece = null;
+                Program.lastStartSpace = this.Space;
+                Space = square;
                 square.Piece = this;
                 hasMoved = true;
                 Location = new Point(square.Location.X+5,square.Location.Y+5);
@@ -141,7 +138,7 @@ namespace Chess {
                     BackColor = Square.WHITE;
                 else
                     BackColor = Square.BLACK;
-                Program.lastEndSpace = this.Square;
+                Program.lastEndSpace = Space;
                 Program.lastMoved = this;
                 Program.Selected = null;
                 Image = BaseImage;
@@ -155,8 +152,8 @@ namespace Chess {
         /// <param name="square">The square being checked</param>
         /// <returns>True if the Piece is diagonal from the square</returns>
         public bool IsDiagonalTo(Square square) {
-            int xDir = this.Square.RowNumber - square.RowNumber;
-            int yDir = Board.colLabels.IndexOf(this.Square.ColumnLabel) - Board.colLabels.IndexOf(square.ColumnLabel);
+            int xDir = Space.RowNumber - square.RowNumber;
+            int yDir = Board.colLabels.IndexOf(Space.ColumnLabel) - Board.colLabels.IndexOf(square.ColumnLabel);
             if(xDir != 0 && Math.Abs(yDir/xDir) == 1) {
                 return true;
             }
@@ -168,9 +165,9 @@ namespace Chess {
         /// <param name="e">The click event</param>
         protected override void OnClick(EventArgs e) {
             if (Program.Selected != null && Program.Selected.IsWhite != IsWhite) { //Taking enemy Piece
-                if (Program.Selected.CanTake(this) && Program.Selected.CanMoveTo(this.Square)) {
+                if (Program.Selected.CanTake(this) && Program.Selected.CanMoveTo(Space)) {
                     Remove();
-                    Program.Selected.MoveTo(this.Square);
+                    Program.Selected.MoveTo(Space);
                 }
             }
             else if(Program.Selected != null && Program.Selected.Equals(this)) { //Unselect Piece
@@ -191,7 +188,7 @@ namespace Chess {
         /// Removes this Piece from the Board
         /// </summary>
         public void Remove() {
-            Square.Piece = null;
+            Space.Piece = null;
             Program.display.Controls.Remove(this);
         }
         /// <summary>

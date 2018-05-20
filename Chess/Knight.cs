@@ -8,7 +8,7 @@ namespace Chess {
     /// <summary>
     /// The Knight chess Piece
     /// </summary>
-    class Knight : Piece {
+    public class Knight : Piece {
         /// <summary>
         /// Creates a new Knight Piece
         /// </summary>
@@ -39,8 +39,8 @@ namespace Chess {
         /// <param name="square">The Square the Knight is moving to</param>
         /// <returns>True if the move is valid</returns>
         public override bool CanMoveTo(Square square) {
-            int xDist = square.RowNumber - this.Square.RowNumber;
-            int yDist = Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(this.Square.ColumnLabel);
+            int xDist = square.RowNumber - Space.RowNumber;
+            int yDist = Board.colLabels.IndexOf(square.ColumnLabel) - Board.colLabels.IndexOf(Space.ColumnLabel);
             if(Math.Abs(yDist) == 2 && Math.Abs(xDist) == 1) {
                 return true;
             }
@@ -49,7 +49,11 @@ namespace Chess {
             }
             return false;
         }
-
+        /// <summary>
+        /// Checks that the path is clear, which it always is for knights, so it is always true
+        /// </summary>
+        /// <param name="square">The Square the knight is moving to</param>
+        /// <returns>True if the path is clear</returns>
         public new bool PathIsClear(Square square) {
             return true;
         }
