@@ -100,6 +100,13 @@ namespace Chess {
         public override bool MoveTo(Square square) {
             if(IsDiagonalTo(square) && square.Piece == null && CanMoveTo(square)) //En Passant taking pieces
                 Program.lastEndSpace.Piece.Remove();
+            //Pawn reaches other side
+            if (square.RowNumber == 1 || square.RowNumber == 8) { //TODO: Add selection for pieces, not just queen
+                Remove();
+                Queen queen = new Queen(Space, IsWhite, id);
+                Program.display.AddPiece(queen);
+                return queen.MoveTo(square);
+            }
             return base.MoveTo(square);
         }
 

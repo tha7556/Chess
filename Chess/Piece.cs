@@ -11,7 +11,7 @@ namespace Chess {
     /// Abstract Chess Piece. Extends a PictureBox to make it easier to display
     /// </summary>
     public abstract class Piece : PictureBox {
-        private int id;
+        protected int id;
         /// <summary>
         /// True if the Piece has already been moved, false otherwise
         /// </summary>
