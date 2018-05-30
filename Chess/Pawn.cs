@@ -30,8 +30,27 @@ namespace Chess {
         /// Gets all available moves that the Pawn can move to
         /// </summary>
         /// <returns>A List of all available Squares</returns>
-        public override List<Square> AvailableMoves() { //TODO: Implement
-            throw new NotImplementedException();
+        public override List<Square> AvailableMoves() {
+            List<Square> squares = new List<Square>(4);
+            List<Square> result = new List<Square>(4);
+            if(IsWhite) {
+                squares.Add(Program.board[Space.ColumnLabel + (Space.RowNumber + 1).ToString()]);
+                squares.Add(Program.board[Space.ColumnLabel + (Space.RowNumber + 2).ToString()]);
+                squares.Add(Program.board[Board.colLabels[Board.colLabels.IndexOf(Space.ColumnLabel) + 1] + (Space.RowNumber + 1).ToString()]);
+                squares.Add(Program.board[Board.colLabels[Board.colLabels.IndexOf(Space.ColumnLabel) - 1] + (Space.RowNumber + 1).ToString()]);
+            }
+            else {
+                squares.Add(Program.board[Space.ColumnLabel + (Space.RowNumber - 1).ToString()]);
+                squares.Add(Program.board[Space.ColumnLabel + (Space.RowNumber - 2).ToString()]);
+                squares.Add(Program.board[Board.colLabels[Board.colLabels.IndexOf(Space.ColumnLabel) + 1] + (Space.RowNumber - 1).ToString()]);
+                squares.Add(Program.board[Board.colLabels[Board.colLabels.IndexOf(Space.ColumnLabel) - 1] + (Space.RowNumber - 1).ToString()]);
+            }
+            foreach (Square square in squares) {
+                if (CanMoveTo(square)) { 
+                    result.Add(square);
+                }
+            }
+            return squares;
         }
         /// <summary>
         /// Checks to see if the Pawn can move to the specified location
